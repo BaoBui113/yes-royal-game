@@ -1,0 +1,107 @@
+.header-text span:hover {
+  color: #ffffff;
+  text-shadow: 0px 0px 10px #ffffff;
+  cursor: pointer;
+}
+
+.sitemenu > li:nth-child(1) {
+  width: 120px;
+  background-position: 0px 0px;
+}
+
+.sitemenu > li:nth-child(2) {
+  width: 124px;
+  background-position: -120px 0px;
+}
+
+.sitemenu > li:nth-child(3) {
+  width: 136px;
+  background-position: -244px 0px;
+}
+
+.sitemenu > li:nth-child(4) {
+  width: 122px;
+  background-position: -380px 0px;
+}
+
+.sitemenu > li:nth-child(5) {
+  width: 157px;
+  background-position: -502px 0px;
+}
+
+.sitemenu > li:nth-child(6) {
+  width: 138px;
+  background-position: -659px 0px;
+}
+
+.sitemenu > li:nth-child(7) {
+  width: 127px;
+  background-position: -797px 0px;
+}
+
+.sitemenu > li:nth-child(1) a {
+  background-position: 0px bottom;
+}
+
+.sitemenu > li:nth-child(2) a {
+  background-position: -120px bottom;
+}
+
+.sitemenu > li:nth-child(3) a {
+  background-position: -244px bottom;
+}
+
+.sitemenu > li:nth-child(4) a {
+  background-position: -380px bottom;
+}
+
+.sitemenu > li:nth-child(5) a {
+  background-position: -502px bottom;
+}
+
+.sitemenu > li:nth-child(6) a {
+  background-position: -659px bottom;
+}
+
+.sitemenu > li:nth-child(7) a {
+  background-position: -797px bottom;
+}
+
+.sitemenu > li:hover > a {
+  opacity: 1;
+}
+
+.sitemenu > li:hover > ul {
+  opacity: 1;
+}
+
+/* .sitemenu > li:hover > ul {
+  padding: 20px 0;
+  border-radius: 10px;
+  opacity: 1;
+} */
+
+/* .sitemenu > li:hover > ul {
+  opacity: 1;
+}
+
+.sitemenu > li > ul > li > a {
+  display: block;
+  height: 0px;
+  padding: 0;
+  line-height: 25px;
+  text-align: center;
+  overflow: hidden;
+  transition: all ease 0.2s;
+  font-size: 12px;
+}
+
+.sitemenu > li:hover > ul > li > a {
+  color: #7a5a3d;
+  height: 25px;
+}
+
+.sitemenu > li:hover > ul > li > a:hover {
+  background: #333;
+  color: #e2c396;
+} */
