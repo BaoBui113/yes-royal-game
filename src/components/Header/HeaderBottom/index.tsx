@@ -28,7 +28,7 @@ export default function HeaderBottom() {
                                 {item.subHref &&
                                     <ul style={{
                                         width: 'calc(100% + 40px)',
-                                    }} className='flex flex-col opacity-0 transition-all ease-in .6s justify-center absolute opacity-1 left-1/2 -translate-x-1/2 -bottom-[80px] bg-black text-center rounded-[10px] min-h-[80px]'>
+                                    }} className='flex flex-col opacity-0 transition-all ease-linear .6s justify-center absolute opacity-1 left-1/2 -translate-x-1/2 top-[60px] bg-black text-center rounded-[10px] py-4'>
                                         {item.subHref.map((subItem, subIdx) => {
                                             return (
                                                 <li key={subIdx}>
@@ -37,7 +37,6 @@ export default function HeaderBottom() {
                                             )
                                         })}
                                     </ul>
-
                                 }
                             </li>
                         )
