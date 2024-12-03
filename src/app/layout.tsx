@@ -2,6 +2,9 @@ import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import './globals.css';
 import '../styles/header.css'
+import '../styles/money.css'
+import '../styles/game-zone.css'
+import '../styles/notice.css'
 import NextUiProvider from './NextUiProvider';
 import { AuthProvider } from '@/lib/context/AuthContext';
 

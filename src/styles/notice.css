@@ -1,0 +1,23 @@
+.bottom .active {
+  opacity: 1;
+}
+.bottom #board_N a {
+  background-position: 0px 0px;
+}
+
+.bottom #board_E a {
+  background-position: 0px -90px;
+}
+
+.bottom #board_F a {
+  background-position: 0px -180px;
+}
+
+.bottom ul {
+  width: 380px;
+  height: 250px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  display: block;
+}

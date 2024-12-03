@@ -1,0 +1,110 @@
+.gamezone > ul > li:before,
+.gamezone > ul > li:after {
+  content: '';
+  position: absolute;
+  transition: all ease 0.2s;
+}
+.gamezone > ul > li:after {
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+  background-image: url('/assets/image/game-zone/gamezone_girl3.png');
+  background-repeat: no-repeat;
+  z-index: 70;
+}
+.gamezone > ul > li > a:after {
+  content: '';
+  background-image: url('/assets/image/game-zone/gamezone_gloss.png');
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+  position: absolute;
+  background-repeat: no-repeat;
+  z-index: 1000;
+}
+.gamezone > ul > li:hover:before {
+  left: -174px;
+  opacity: 0;
+}
+
+.gamezone > ul > li.evolution-game:after {
+  background-position: 0 0;
+}
+
+.gamezone > ul > li.pragmatic-game:after {
+  background-position: -234px 0;
+}
+
+.gamezone > ul > li.sexy-game:after {
+  background-position: -468px 0;
+}
+
+.gamezone > ul > li.bota-game:after {
+  background-position: -702px 0;
+}
+
+.gamezone > ul > li.total-game:after {
+  background-position: -936px 0;
+}
+
+.gamezone > ul > li.tournament-game:after {
+  background-position: -468px -560px;
+}
+
+.gamezone > ul > li.h-game:after {
+  background-position: 0px -280px;
+}
+
+.gamezone > ul > li.sa-game:after {
+  background-position: -234px -280px;
+}
+
+.gamezone > ul > li.m-game:after {
+  background-position: -468px -280px;
+}
+
+.gamezone > ul > li.sa-slot:after {
+  background-position: -702px -280px;
+}
+
+.gamezone > ul > li.m-slot:after {
+  background-position: -936px -280px;
+}
+
+.gamezone > ul > li.pragmatic-slot:after {
+  background-position: 0px -560px;
+}
+
+.gamezone > ul > li.redtiger-slot:after {
+  background-position: -234px -560px;
+}
+
+/* .gamezone li {
+  display: inline-block;
+  margin: 0 15px;
+  position: relative;
+  cursor: pointer;
+} */
+
+.gamezone li:hover::before {
+  opacity: 1;
+}
+
+.gamezone li:hover a {
+  background: rgba(255, 215, 0, 0.7);
+}
+.gamezone > ul > li:hover {
+  border: 1px solid #dbb676;
+}
+
+.gamezone a {
+  display: block;
+  padding: 10px 20px;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
