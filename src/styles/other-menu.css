@@ -24,8 +24,36 @@
 }
 
 .othermenu > ul > li {
+  transition: all ease 0.3s;
   transform: scale(0.9, 0.9);
 }
 .othermenu > ul > li:hover {
   transform: scale(1, 1);
+}
+
+.othermenu > ul > li:nth-child(1) > a {
+  background-position: 0px bottom;
+}
+
+.othermenu > ul > li:nth-child(2) > a {
+  background-position: -180px bottom;
+}
+
+.othermenu > ul > li:nth-child(3) > a {
+  background-position: -360px bottom;
+}
+
+.othermenu > ul > li:nth-child(4) > a {
+  background-position: -540px bottom;
+}
+
+.othermenu > ul > li:nth-child(5) > a {
+  background-position: -720px bottom;
+}
+
+.othermenu > ul > li:nth-child(6) > a {
+  background-position: -900px bottom;
+}
+.othermenu > ul > li > a:hover {
+  opacity: 1;
 }

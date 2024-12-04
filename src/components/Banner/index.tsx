@@ -1,5 +1,7 @@
 'use client';
 import React, { useEffect, useRef } from 'react';
+import SliderBanner from './SliderBanner';
+import Login from '../Login';
 export default function Banner() {
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -57,7 +59,17 @@ export default function Banner() {
           data-depth="1.5"
           className="bg-[url('/assets/image/banner/main_visual_img05.png')] w-[570px] h-[400px] mx-[1000px] my-0 absolute top-0 left-0 transition-transform duration-1000 1.2s ease-out"
         ></div>
+
       </div>
+
+      <div className='absolute right-24 top-7'>
+        <Login />
+      </div>
+
+      <div className='absolute top-1/2 left-1/4 -translate-y-1/2'>
+        <SliderBanner />
+      </div>
+
     </section>
   );
 }

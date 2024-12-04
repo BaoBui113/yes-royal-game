@@ -6,6 +6,7 @@ import '../styles/money.css';
 import '../styles/game-zone.css';
 import '../styles/notice.css';
 import '../styles/other-menu.css';
+import '../styles/swiper.css'
 import NextUiProvider from './NextUiProvider';
 import { AuthProvider } from '@/lib/context/AuthContext';
 

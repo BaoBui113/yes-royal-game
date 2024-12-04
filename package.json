@@ -34,6 +34,7 @@
     "react-hook-form": "^7.53.2",
     "react-icons": "^4.10.1",
     "react-toastify": "9.1.2",
+    "swiper": "^11.1.15",
     "tailwind-merge": "^2.5.5",
     "tailwindcss-animate": "^1.0.7",
     "yup": "^1.4.0",

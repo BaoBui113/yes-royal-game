@@ -1,4 +1,5 @@
 import Banner from '@/components/Banner';
+import Footer from '@/components/Footer';
 import GameZone from '@/components/GameZone';
 import Header from '@/components/Header';
 import MoneyMenu from '@/components/MoneyMenu';
@@ -12,6 +13,7 @@ export default function Home() {
       <MoneyMenu />
       <GameZone />
       <Notice />
+      <Footer />
     </>
   );
 }

@@ -16,6 +16,10 @@ const otherMenu = [
     title: '모바일서비스',
     link: '',
   },
+  {
+    title: '모바일서비스',
+    link: '',
+  },
 ];
 export default function OtherMenu() {
   return (
@@ -24,7 +28,7 @@ export default function OtherMenu() {
         {otherMenu.map((item, inx) => {
           return (
             <li
-              className="bg-[url('/assets/image/rank/othermenu.png')] float-left w-[180px] h-[180px] relative"
+              className="bg-[url('/assets/image/rank/othermenu.png')] float-left w-[180px] h-[180px] relative mt-[30px] mx-[60px] mb-0"
               key={inx}
             >
               <a
