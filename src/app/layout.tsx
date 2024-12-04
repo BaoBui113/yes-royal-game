@@ -8,6 +8,7 @@ import '../styles/notice.css';
 import '../styles/other-menu.css';
 import '../styles/swiper.css'
 import NextUiProvider from './NextUiProvider';
+import { Toaster } from 'react-hot-toast';
 import { AuthProvider } from '@/lib/context/AuthContext';
 
 const geistSans = localFont({
@@ -37,7 +38,10 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <NextUiProvider>
-          <AuthProvider>{children}</AuthProvider>
+          <AuthProvider>
+            {children}
+            <Toaster />
+          </AuthProvider>
         </NextUiProvider>
       </body>
     </html>
