@@ -46,28 +46,6 @@ export default function LoginForm() {
         }
         toast.error("비밀번호 또는 사용자 이름이 올바르지 않습니다");
         setIsLoading(false);
-        // setIsLoading(true);
-        // await handleLogin(data).then((res) => {
-        //     if (res.status === '0') {
-        //         const authUser = JSON.stringify({
-        //             GAME_ALIAS: res.GAME_ALIAS,
-        //             HP_NO: res.HP_NO,
-        //             MEM_ID: res.MEM_ID,
-        //             MEM_LID: res.MEM_LID,
-        //         })
-        //         login(authUser);
-        //         toast.success('Login Success');
-        //         onOpenChangeLogin();
-        //     }
-        //     else {
-        //         toast.error(res.message);
-        //     }
-        //     setIsLoading(false);
-        // }).catch((error) => {
-        //     console.log("error", error);
-        //     setIsLoading(false);
-        // });
-
     };
     return (
         <Modal title='Login' isOpen={isModalLoginOpen} onClose={closeModal}>
@@ -80,7 +58,7 @@ export default function LoginForm() {
                         <Input
                             {...field}
                             variant='flat'
-                            className='border-solid border-black text-white rounded mb-4 border'
+                            className='text-white rounded mb-4'
                             placeholder="아이디"
                             title='아이디'
                             errorMessage={errors.username?.message}
@@ -97,7 +75,7 @@ export default function LoginForm() {
                             {...field}
                             placeholder="비밀번호"
                             title='비밀번호'
-                            className='text-white border-solid border-black rounded border'
+                            className='text-white rounded'
                             errorMessage={errors.password?.message}
                             type={isVisible ? "text" : "password"}
                             endContent={
@@ -114,7 +92,7 @@ export default function LoginForm() {
                         />
                     )}
                 />
-                {isLoading ? <div className='flex justify-center'><Spinner /></div> : <Button className='bg-blue-600 w-[130px] rounded-lg mt-4' type="submit">Login</Button>}
+                {isLoading ? <div className='flex justify-center mt-4'><Spinner color="primary" /></div> : <Button className='bg-blue-600 w-[130px] rounded-lg mt-4' type="submit">Login</Button>}
 
             </form>
         </Modal>

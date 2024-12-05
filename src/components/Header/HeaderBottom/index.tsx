@@ -31,7 +31,6 @@ export default function HeaderBottom() {
             alert('open sub menu')
             return
         }
-        alert('open modal')
     }
     return (
         <>

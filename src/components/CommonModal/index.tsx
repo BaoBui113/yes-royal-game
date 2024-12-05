@@ -17,7 +17,7 @@ export default function Modal({
 
     return (
         <div
-            className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 transition-opacity duration-600"
+            className="fixed inset-0 h-screen flex items-center justify-center bg-black bg-opacity-50 z-50 transition-opacity duration-600"
             style={{ opacity: isOpen ? 1 : 0 }}
             onClick={onClose}
         >
@@ -27,7 +27,7 @@ export default function Modal({
                     boxShadow: "0px 0px 50px #773d05",
                     backgroundPosition: "-40px 0"
                 }}
-                className={`min-w-[700px] h-[500px] bg-[url('/assets/image/banner/subpage_bg.jpg')] bg-no-repeat border-solid border-[2px] flex justify-center items-center flex-col border-[#fee188] bg-white  p-6 shadow-lg transition-transform duration-300 transform ${isOpen ? "scale-100 opacity-100" : "scale-95 opacity-0"
+                className={`min-w-[800px] h-[600px] bg-[url('/assets/image/banner/subpage_bg.jpg')] bg-transparent bg-no-repeat bg-cover border-solid border-[2px] flex justify-center items-center flex-col border-[#fee188] bg-white  p-6 shadow-lg transition-transform duration-300 transform ${isOpen ? "scale-100 opacity-100" : "scale-95 opacity-0"
                     } ${className}`}
                 onClick={(e) => e.stopPropagation()}
             >
