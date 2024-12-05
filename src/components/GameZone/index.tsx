@@ -52,7 +52,7 @@ export default function GameZone() {
                 {
                     listGames.map((game, inx) => {
                         return (
-                            <li className={`bg-[url('/assets/image/game-zone/gamezone_bg.png')] w-[234px] h-[280px] float-left relative z-50 border border-solid border-[#000] m-[2px] transition-all ease .2s ${game.title}`} key={inx}>
+                            <li className={`bg-[url('/assets/image/game-zone/gamezone_bg.png')] w-[234px] h-[280px] float-left relative z-10 border border-solid border-[#000] m-[2px] transition-all ease .2s ${game.title}`} key={inx}>
                                 <a href="">{game.title}</a>
                             </li>
                         )

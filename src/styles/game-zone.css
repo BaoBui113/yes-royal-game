@@ -11,7 +11,7 @@
   right: 0px;
   background-image: url('/assets/image/game-zone/gamezone_girl3.png');
   background-repeat: no-repeat;
-  z-index: 70;
+  z-index: 10;
 }
 .gamezone > ul > li > a:after {
   content: '';
@@ -22,7 +22,7 @@
   right: 0px;
   position: absolute;
   background-repeat: no-repeat;
-  z-index: 1000;
+  z-index: 10;
 }
 .gamezone > ul > li:hover:before {
   left: -174px;

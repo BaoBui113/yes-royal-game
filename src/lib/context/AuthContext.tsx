@@ -8,9 +8,9 @@ interface AuthContextType {
   user: IProfile | null;
   login: (token: string) => void;
   logout: () => void;
-  isOpenLogin: boolean;
-  onOpenLogin: () => void;
-  onOpenChangeLogin: () => void;
+  isModalLoginOpen: boolean;
+  setIsModalLoginOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  handleShowModalLogin: () => void;
   isOpenBank: boolean;
   onOpenBank: () => void;
   onOpenChangeBank: () => void;
@@ -30,27 +30,31 @@ interface AuthProviderProps {
 // Create provider component
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [user, setUser] = useState<IProfile | null>(null);
-  const { isOpen: isOpenLogin, onOpen: onOpenLogin, onOpenChange: onOpenChangeLogin } = useDisclosure();
+  const [isModalLoginOpen, setIsModalLoginOpen] = useState(false);
   const { isOpen: isOpenBank, onOpen: onOpenBank, onOpenChange: onOpenChangeBank } = useDisclosure();
   const [selectGameRun, setSelectGameRun] = useState(1)
   useEffect(() => {
-    const auth = localStorage.getItem("authToken");
+    const auth = localStorage.getItem("informationUserYesRoyal");
     if (auth) {
       try {
         const parseAuth = JSON.parse(auth);
         setUser(parseAuth);
       } catch (error) {
         console.error("Invalid auth", error);
-        localStorage.removeItem("authToken");
+        localStorage.removeItem("informationUserYesRoyal");
       }
     }
   }, []);
+
+  const handleShowModalLogin = () => {
+    setIsModalLoginOpen(true);
+  }
 
   const login = (auth: string) => {
     try {
       const parseAuth: IProfile = JSON.parse(auth);
       setUser(parseAuth);
-      localStorage.setItem("authToken", auth);
+      localStorage.setItem("informationUserYesRoyal", auth);
     } catch (error) {
       console.error("Login failed: invalid auth", error);
     }
@@ -58,11 +62,11 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   const logout = () => {
     setUser(null);
-    localStorage.removeItem("authToken");
+    localStorage.removeItem("informationUserYesRoyal");
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout, isOpenLogin, onOpenChangeLogin, onOpenLogin, isOpenBank, onOpenBank, onOpenChangeBank, selectGameRun, setSelectGameRun }}>
+    <AuthContext.Provider value={{ user, login, logout, setIsModalLoginOpen, isModalLoginOpen, handleShowModalLogin, isOpenBank, onOpenBank, onOpenChangeBank, selectGameRun, setSelectGameRun }}>
       {children}
     </AuthContext.Provider>
   );

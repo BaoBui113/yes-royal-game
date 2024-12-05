@@ -39,35 +39,35 @@
   background-position: -797px 0px;
 }
 
-.sitemenu > li:nth-child(1) a {
+.sitemenu > li:nth-child(1) p {
   background-position: 0px bottom;
 }
 
-.sitemenu > li:nth-child(2) a {
+.sitemenu > li:nth-child(2) p {
   background-position: -120px bottom;
 }
 
-.sitemenu > li:nth-child(3) a {
+.sitemenu > li:nth-child(3) p {
   background-position: -244px bottom;
 }
 
-.sitemenu > li:nth-child(4) a {
+.sitemenu > li:nth-child(4) p {
   background-position: -380px bottom;
 }
 
-.sitemenu > li:nth-child(5) a {
+.sitemenu > li:nth-child(5) p {
   background-position: -502px bottom;
 }
 
-.sitemenu > li:nth-child(6) a {
+.sitemenu > li:nth-child(6) p {
   background-position: -659px bottom;
 }
 
-.sitemenu > li:nth-child(7) a {
+.sitemenu > li:nth-child(7) p {
   background-position: -797px bottom;
 }
 
-.sitemenu > li:hover > a {
+.sitemenu > li:hover > p {
   opacity: 1;
 }
 
