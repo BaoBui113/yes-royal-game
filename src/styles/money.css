@@ -27,59 +27,59 @@
   width: 233px;
 }
 
-.moneymenu ul li:nth-child(1) a {
+.moneymenu ul li:nth-child(1) p {
   background-position: 58px -280px;
 }
 
-.moneymenu ul li:nth-child(2) a {
+.moneymenu ul li:nth-child(2) p {
   background-position: -31px -280px;
 }
 
-.moneymenu ul li:nth-child(3) a {
+.moneymenu ul li:nth-child(3) p {
   background-position: -92px -280px;
 }
 
-.moneymenu ul li:nth-child(4) a {
+.moneymenu ul li:nth-child(4) p {
   background-position: -156px -280px;
 }
 
-.moneymenu ul li:nth-child(5) a {
+.moneymenu ul li:nth-child(5) p {
   background-position: -219px -280px;
 }
 
-.moneymenu ul li:nth-child(6) a {
+.moneymenu ul li:nth-child(6) p {
   background-position: 37px -277px;
 }
 
-.moneymenu > ul > li:hover > a {
+.moneymenu > ul > li:hover > p {
   background-color: #8e602d;
   transition: all ease 1.5s;
 }
 
-.moneymenu > ul > li:nth-child(1):hover > a {
+.moneymenu > ul > li:nth-child(1):hover > p {
   background-position: 58px 20px;
 }
 
-.moneymenu > ul > li:nth-child(2):hover > a {
+.moneymenu > ul > li:nth-child(2):hover > p {
   background-position: -31px 20px;
 }
 
-.moneymenu > ul > li:nth-child(3):hover > a {
+.moneymenu > ul > li:nth-child(3):hover > p {
   background-position: -92px 20px;
 }
 
-.moneymenu > ul > li:nth-child(4):hover > a {
+.moneymenu > ul > li:nth-child(4):hover > p {
   background-position: -156px 20px;
 }
 
-.moneymenu > ul > li:nth-child(5):hover > a {
+.moneymenu > ul > li:nth-child(5):hover > p {
   background-position: -219px 20px;
 }
-.moneymenu > ul > li:nth-child(6):hover > a {
+.moneymenu > ul > li:nth-child(6):hover > p {
   background-position: 37px 20px;
 }
 
-.moneymenu > ul > li > a:before {
+.moneymenu > ul > li > p:before {
   content: '';
   display: block;
   position: absolute;
@@ -90,29 +90,29 @@
   background-image: url('/assets/image/money/moneymenu.png');
 }
 
-.moneymenu ul li:nth-child(1) a:before {
+.moneymenu ul li:nth-child(1) p:before {
   background-position: 0px 0px;
 }
 
-.moneymenu ul li:nth-child(2) a:before {
+.moneymenu ul li:nth-child(2) p:before {
   background-position: -233px 0px;
 }
 
-.moneymenu ul li:nth-child(3) a:before {
+.moneymenu ul li:nth-child(3) p:before {
   background-position: -436px 0px;
 }
 
-.moneymenu ul li:nth-child(4) a:before {
+.moneymenu ul li:nth-child(4) p:before {
   background-position: -673px 0px;
 }
 
-.moneymenu ul li:nth-child(5) a:before {
+.moneymenu ul li:nth-child(5) p:before {
   background-position: -891px 0px;
 }
-.moneymenu ul li:nth-child(6) a:before {
+.moneymenu ul li:nth-child(6) p:before {
   background-position: -879px 0px;
 }
-.moneymenu > ul > li > a:after {
+.moneymenu > ul > li > p:after {
   content: '';
   height: 100px;
   display: block;
@@ -126,27 +126,27 @@
   transition: all ease 0.2s;
 }
 
-.moneymenu > ul > li:nth-child(1) > a:after {
+.moneymenu > ul > li:nth-child(1) > p:after {
   background-position: 0px -100px;
 }
 
-.moneymenu > ul > li:nth-child(2) > a:after {
+.moneymenu > ul > li:nth-child(2) > p:after {
   background-position: -233px -100px;
 }
 
-.moneymenu > ul > li:nth-child(3) > a:after {
+.moneymenu > ul > li:nth-child(3) > p:after {
   background-position: -436px -100px;
 }
 
-.moneymenu ul li:nth-child(4) a:after {
+.moneymenu ul li:nth-child(4) p:after {
   background-position: -673px -100px;
 }
 
-.moneymenu ul li:nth-child(5) a:after {
+.moneymenu ul li:nth-child(5) p:after {
   background-position: -891px -100px;
 }
 
-.moneymenu ul li:nth-child(6) a:after {
+.moneymenu ul li:nth-child(6) p:after {
   background-position: -879px -100px;
 }
 
@@ -160,7 +160,7 @@
   }
 }
 
-.moneymenu > ul > li:hover > a:after {
+.moneymenu > ul > li:hover > p:after {
   opacity: 1;
   animation: moneymenu-ani infinite alternate 0.5s;
 }

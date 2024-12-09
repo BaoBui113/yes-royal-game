@@ -1,4 +1,6 @@
 import Banner from '@/components/Banner';
+import Deposit from '@/components/Deposit';
+import ModalNoticeDeposit from '@/components/Deposit/ModalNoticeDeposit';
 import Footer from '@/components/Footer';
 import GameZone from '@/components/GameZone';
 import Header from '@/components/Header';
@@ -8,8 +10,7 @@ import Notice from '@/components/Notice';
 
 export default function Home() {
   return (
-    <section className='relative'>
-
+    <section className="relative">
       <Header />
       <Banner />
       <MoneyMenu />
@@ -17,6 +18,8 @@ export default function Home() {
       <Notice />
       <Footer />
       <LoginForm />
+      <Deposit />
+      <ModalNoticeDeposit />
     </section>
   );
 }

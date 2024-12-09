@@ -17,6 +17,7 @@ export const customFetch = async (url: string, options: FetchOptions = {}) => {
         Authorization: AUTHOR_TOKEN,
       },
     });
+    console.log('response', response);
 
     if (!response.ok) {
       const errorData = await response.json();
