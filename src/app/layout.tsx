@@ -1,15 +1,16 @@
+import { AuthProvider } from '@/lib/context/AuthContext';
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
-import './globals.css';
-import '../styles/header.css';
-import '../styles/money.css';
+import { Toaster } from 'react-hot-toast';
 import '../styles/game-zone.css';
+import '../styles/header.css';
+import '../styles/loading-game.css';
+import '../styles/money.css';
 import '../styles/notice.css';
 import '../styles/other-menu.css';
-import '../styles/swiper.css'
+import '../styles/swiper.css';
+import './globals.css';
 import NextUiProvider from './NextUiProvider';
-import { Toaster } from 'react-hot-toast';
-import { AuthProvider } from '@/lib/context/AuthContext';
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',

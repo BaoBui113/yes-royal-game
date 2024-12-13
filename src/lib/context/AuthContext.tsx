@@ -23,6 +23,15 @@ interface AuthContextType {
   handleShowModalDepositNotice: () => void;
   isModalDepositNotice: boolean;
   setIsModalDepositNotice: React.Dispatch<React.SetStateAction<boolean>>;
+  handleShowModalWithDraw: () => void;
+  isModalWithdrawOpen: boolean;
+  setIsModalWithdrawOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  handleShowModalSendPhoneSms: () => void;
+  isModalSendPhoneSms: boolean;
+  setIsModalSendPhoneSms: React.Dispatch<React.SetStateAction<boolean>>;
+  handleShowModalSideBar: () => void;
+  isModalSidebar: boolean;
+  setIsModalSideBar: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 // Create AuthContext
@@ -38,7 +47,10 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [user, setUser] = useState<IProfile | null>(null);
   const [isModalLoginOpen, setIsModalLoginOpen] = useState(false);
   const [isModalDepositOpen, setIsModalDepositOpen] = useState(false);
+  const [isModalWithdrawOpen, setIsModalWithdrawOpen] = useState(false);
   const [isModalDepositNotice, setIsModalDepositNotice] = useState(false);
+  const [isModalSendPhoneSms, setIsModalSendPhoneSms] = useState(false);
+  const [isModalSidebar, setIsModalSideBar] = useState(false);
   const [selectGameRun, setSelectGameRun] = useState(1);
   useEffect(() => {
     const auth = localStorage.getItem('informationUserYesRoyal');
@@ -57,12 +69,24 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     setIsModalLoginOpen(true);
   };
 
+  const handleShowModalWithDraw = () => {
+    setIsModalWithdrawOpen(true);
+  };
+
   const handleShowModalDeposit = () => {
     setIsModalDepositOpen(true);
   };
 
   const handleShowModalDepositNotice = () => {
     setIsModalDepositNotice(true);
+  };
+
+  const handleShowModalSendPhoneSms = () => {
+    setIsModalSendPhoneSms(true);
+  };
+
+  const handleShowModalSideBar = () => {
+    setIsModalSideBar(true);
   };
 
   const login = (auth: string) => {
@@ -97,6 +121,15 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         handleShowModalDepositNotice,
         isModalDepositNotice,
         setIsModalDepositNotice,
+        handleShowModalWithDraw,
+        isModalWithdrawOpen,
+        setIsModalWithdrawOpen,
+        handleShowModalSendPhoneSms,
+        isModalSendPhoneSms,
+        setIsModalSendPhoneSms,
+        isModalSidebar,
+        setIsModalSideBar,
+        handleShowModalSideBar,
       }}
     >
       {children}

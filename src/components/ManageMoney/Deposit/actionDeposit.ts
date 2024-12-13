@@ -1,5 +1,3 @@
-'use server';
-
 import { handleDeposit } from '@/app/services/payment';
 export const handleActionDeposit = async (formData: FormData) => {
   const username = formData.get('username') as string;
@@ -15,8 +13,6 @@ export const handleActionDeposit = async (formData: FormData) => {
     game_id,
     comment,
   };
-  console.log('data', data);
-
   try {
     const res = await handleDeposit(data);
     return res;

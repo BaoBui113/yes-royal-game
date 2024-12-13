@@ -13,7 +13,7 @@
   background-repeat: no-repeat;
   z-index: 10;
 }
-.gamezone > ul > li > a:after {
+.gamezone > ul > li > span:after {
   content: '';
   background-image: url('/assets/image/game-zone/gamezone_gloss.png');
   top: 0px;
@@ -81,25 +81,18 @@
   background-position: -234px -560px;
 }
 
-/* .gamezone li {
-  display: inline-block;
-  margin: 0 15px;
-  position: relative;
-  cursor: pointer;
-} */
-
 .gamezone li:hover::before {
   opacity: 1;
 }
 
-.gamezone li:hover a {
+.gamezone li:hover span {
   background: rgba(255, 215, 0, 0.7);
 }
 .gamezone > ul > li:hover {
   border: 1px solid #dbb676;
 }
 
-.gamezone a {
+.gamezone span {
   display: block;
   padding: 10px 20px;
   background: rgba(0, 0, 0, 0.5);

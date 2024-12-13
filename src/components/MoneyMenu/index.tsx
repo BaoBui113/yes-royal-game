@@ -6,7 +6,7 @@ const listMoneyMenu = [
     title: '입금신청',
   },
   {
-    href: '',
+    href: '/withdraw',
     title: '출금신청',
   },
   {
@@ -22,7 +22,7 @@ const listMoneyMenu = [
     title: '환전내역',
   },
   {
-    href: '',
+    href: '/move-game-money',
     title: '환전신청',
   },
 ];
@@ -32,6 +32,8 @@ export default function MoneyMenu() {
     handleShowModalLogin,
     handleShowModalDeposit,
     handleShowModalDepositNotice,
+    handleShowModalWithDraw,
+    handleShowModalSendPhoneSms,
   } = useAuth();
   const handleOpenModalMoneyMenu = (item: { href: string; title: string }) => {
     if (!user) {
@@ -41,6 +43,15 @@ export default function MoneyMenu() {
     if (item.href === '/deposit') {
       handleShowModalDeposit();
       handleShowModalDepositNotice();
+      return;
+    }
+    if (item.href === '/withdraw') {
+      handleShowModalWithDraw();
+      handleShowModalDepositNotice();
+      return;
+    }
+    if (item.href === '/move-game-money') {
+      handleShowModalSendPhoneSms();
       return;
     }
   };

@@ -2,11 +2,13 @@
 import { listAmount, listGames } from '@/lib/constants';
 import { useAuth } from '@/lib/context/AuthContext';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { Button } from '@nextui-org/react';
 import { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import * as yup from 'yup';
 import { handleActionDeposit } from '../actionDeposit';
+
 const schema = yup.object().shape({
   game: yup.string().required('Game is required'),
   deposit_name: yup.string().required('Deposit name is required'),
@@ -27,7 +29,7 @@ const schema = yup.object().shape({
 });
 export type FormDepositType = yup.InferType<typeof schema>;
 export default function FormDeposit() {
-  const { user } = useAuth();
+  const { user, setIsModalDepositOpen } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
   const {
     control,
@@ -59,13 +61,13 @@ export default function FormDeposit() {
       setIsLoading(false);
       return;
     }
-    console.log('response', response);
-
     if (response.status === '0') {
       toast.success(response.message);
       setIsLoading(false);
+      setIsModalDepositOpen(false);
       return;
     }
+    setIsLoading(false);
     toast.error(response.message);
   };
   return (
@@ -214,12 +216,13 @@ export default function FormDeposit() {
       </div>
 
       <div className="flex justify-center mt-4">
-        <button
+        <Button
+          isLoading={isLoading}
           type="submit"
           className="px-4 py-2 bg-[#fdcc83] text-[#060708] rounded hover:bg-[#e0b567]"
         >
           Submit
-        </button>
+        </Button>
       </div>
     </form>
   );

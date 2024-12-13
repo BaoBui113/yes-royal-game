@@ -11,6 +11,10 @@ export interface IDepositProps {
   game_id: string;
   comment?: string;
 }
+export interface ISendPhoneSms {
+  username: string;
+  phone: string;
+}
 
 export interface GameRunProps {
   username: string;
@@ -25,6 +29,5 @@ export interface IGame2 {
 }
 
 export interface IGame<T> {
-  data: T,
-
-} 
+  data: T;
+}
