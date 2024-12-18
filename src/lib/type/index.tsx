@@ -31,3 +31,9 @@ export interface IGame2 {
 export interface IGame<T> {
   data: T;
 }
+export interface IBoard {
+  NOTICE_SEQ: number;
+  NOTICE_TITLE: string;
+  NOTICE_CONTENT: string;
+  RGST_DT: string;
+}

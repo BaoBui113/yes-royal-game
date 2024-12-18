@@ -6,6 +6,7 @@ import '../styles/game-zone.css';
 import '../styles/header.css';
 import '../styles/loading-game.css';
 import '../styles/money.css';
+import '../styles/my-page.css';
 import '../styles/notice.css';
 import '../styles/other-menu.css';
 import '../styles/swiper.css';
@@ -30,8 +31,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  modal,
 }: Readonly<{
   children: React.ReactNode;
+  modal: React.ReactNode;
 }>) {
   return (
     <html lang="en">
@@ -41,6 +44,7 @@ export default function RootLayout({
         <NextUiProvider>
           <AuthProvider>
             {children}
+            {modal}
             <Toaster />
           </AuthProvider>
         </NextUiProvider>

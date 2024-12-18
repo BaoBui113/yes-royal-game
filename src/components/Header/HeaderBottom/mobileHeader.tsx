@@ -1,14 +1,17 @@
 'use client';
-import { useAuth } from '@/lib/context/AuthContext';
-import { AlignJustify, CircleUserRound } from 'lucide-react';
+import Image from 'next/image';
 
 export default function MobileHeader() {
-  const { handleShowModalSideBar } = useAuth();
   return (
-    <div className="xl:hidden flex justify-between bg-[#413828] items-center p-2 text-[#d4b072] text-sm">
-      <AlignJustify onClick={handleShowModalSideBar} />
-      <span className="font-bold">YES CASINO</span>
-      <CircleUserRound />
+    <div className="header-mobile xl:hidden block">
+      <div className="w-[35%] relative aspect-[1.9882] mx-auto">
+        <Image
+          src={'/assets/image/header/logo_mobile.png'}
+          alt="logo header"
+          fill
+          className="object-contain"
+        />
+      </div>
     </div>
   );
 }

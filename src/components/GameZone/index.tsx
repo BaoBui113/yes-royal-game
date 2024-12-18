@@ -1,6 +1,7 @@
 'use client';
 
 import { useAuth } from '@/lib/context/AuthContext';
+import Image from 'next/image';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
 import { handleActionRunGame } from './actionPlayRun';
@@ -98,11 +99,11 @@ export default function GameZone() {
   };
   return (
     <>
-      <section
+      {/* <section
         style={{
           backgroundPosition: 'center top',
         }}
-        className="gamezone bg-[url('/assets/image/game-zone/gamezone_bg.jpg')] pt-[165px] px-[10px] pb-[50px] relative w-full"
+        className="gamezone bg-[url('/assets/image/game-zone/gamezone_bg.jpg')] pt-[165px] px-[10px] pb-[50px] relative w-full xl:block hidden"
       >
         <h2
           style={{
@@ -112,15 +113,55 @@ export default function GameZone() {
         >
           GAME MENU
         </h2>
-        <ul className="max-w-[1200px] mx-auto relative overflow-auto grid grid-cols-10">
+        <ul className="max-w-[1200px] mx-auto relative overflow-auto grid grid-cols-12 xl:grid-cols-10">
           {listGames.map((game, inx) => {
             return (
               <li
                 onClick={() => handleGameRun(game.value)}
-                className={`cursor-pointer bg-[url('/assets/image/game-zone/gamezone_bg.png')] w-[234px] h-[280px] col-span-2 relative z-10 border border-solid border-[#000] m-[2px] transition-all ease .2s ${game.title}`}
+                className={`cursor-pointer bg-[url('/assets/image/game-zone/gamezone_bg.png')] w-[234px] h-[280px] col-span-12 sm:col-span-6 md:col-span-4 xl:col-span-2 relative z-10 border border-solid border-[#000] m-[2px] transition-all ease .2s ${game.title}`}
                 key={inx}
               >
                 <span>{game.title}</span>
+              </li>
+            );
+          })}
+        </ul>
+      </section> */}
+      <section
+        style={{
+          backgroundPosition: 'center top',
+        }}
+        className="gamezone bg-[url('/assets/image/game-zone/gamezone_bg.jpg')] pt-[50px] xl:pt-[165px] px-[10px] xl:pb-[50px] relative overflow-auto w-full py-5 border-t-[3px] border-solid border-[#9f7b42]"
+      >
+        <h2
+          style={{
+            textIndent: '-200%',
+          }}
+          className="xl:block hidden bg-[url('/assets/image/game-zone/gamezone_light.png')] h-[170px] max-w-[1200px] overflow-hidden absolute mx-auto top-0 left-0 right-0 bg-no-repeat"
+        >
+          GAME MENU DESKTOP
+        </h2>
+
+        <ul className="max-w-[1200px] mx-auto relative overflow-auto grid grid-cols-12 xl:grid-cols-10 gap-4">
+          {listGames.map((game, inx) => {
+            const index = inx + 2;
+            return (
+              <li
+                onClick={() => handleGameRun(game.value)}
+                key={inx}
+                className="border relative border-solid border-[#000] hover:border-[#dbb676] cursor-pointer xl:col-span-2 lg:col-span-3 md:col-span-4 col-span-6  bg-[url('/assets/image/game-zone/gamezone_bg.png')]"
+              >
+                <span className="whitespace-nowrap font-bold md:text-xl text-sm py-2 md:px-5 px-2">
+                  {game.title}
+                </span>
+                <div className=" relative w-full aspect-[188/251]">
+                  <Image
+                    src={`/assets/image/game-zone/Layer_${index}.png`}
+                    alt=""
+                    fill
+                    className="object-contain"
+                  />
+                </div>
               </li>
             );
           })}

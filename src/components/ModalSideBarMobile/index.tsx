@@ -72,7 +72,7 @@ const listGameRules = [
 ];
 const listOtherMenu = [];
 const Sidebar = () => {
-  const { isModalSidebar, setIsModalSideBar } = useAuth();
+  const { isModalSidebar, handleCloseModalSideBar } = useAuth();
   const [openGameRule, setOpenGameRule] = useState(false);
   const handleOpenGameRule = (
     e: MouseEvent<HTMLParagraphElement, globalThis.MouseEvent>,
@@ -83,84 +83,70 @@ const Sidebar = () => {
   console.log('isModalSidebar', isModalSidebar);
 
   return (
-    <div
-      //   onClick={() => setIsModalSideBar(false)}
-      className="flex items-center justify-center max-h-screen overflow-hidden"
-    >
-      {/* Sidebar Overlay */}
-      {isModalSidebar && (
-        <div className="fixed top-0 bottom-0 left-0 right-0 z-[100] overflow-hidden">
-          <div className="absolute inset-0 transition-opacity bg-gray-500 bg-opacity-75" />
-          {/* Sidebar Content */}
-          <section className="absolute inset-y-0 left-0 flex max-w-full">
-            <div
-              className={`w-screen max-w-md transform transition-transform duration-300 ${
-                isModalSidebar ? 'translate-x-0' : 'translate-x-full'
-              }`}
-            >
-              <div className="flex flex-col max-w-[250px] h-full py-6 bg-[#5e5037] shadow-xl relative">
-                {/* Sidebar Header */}
+    <div className="flex items-center justify-center max-h-screen overflow-hidden">
+      <div
+        className={`fixed inset-0 z-[70] overflow-hidden transition-all ease-linear duration-300 ${
+          isModalSidebar
+            ? ' flex items-center justify-center bg-black bg-opacity-50'
+            : ' opacity-0 h-0'
+        }`}
+      >
+        <div
+          onClick={handleCloseModalSideBar}
+          className="absolute inset-0 transition-opacity bg-gray-500 bg-opacity-75"
+        />
+        <section className="absolute inset-y-0 left-0 flex max-w-full">
+          <div
+            className={`transform transition-transform duration-300 ${
+              isModalSidebar ? 'translate-x-0' : '-translate-x-full'
+            }`}
+          >
+            <div className="flex flex-col w-[250px] h-full bg-[#5e5037] shadow-xl relative overflow-auto pb-[60px] ">
+              <h2 className="font-semibold text-center text-[#9c855c] py-[10px]">
+                예스카지노
+              </h2>
 
-                <h2 className="font-semibold text-center text-[#9c855c]">
-                  예스카지노
-                </h2>
-                <button
-                  onClick={() => setIsModalSideBar(false)}
-                  className="absolute text-2xl font-bold top-2 right-4"
+              {listMenuHeader.map((item, inx) => (
+                <Link
+                  className="bg-[#d4b072] rounded-[40px] text-[#413828] text-center py-[7px] my-1 mx-[10px]"
+                  key={inx}
+                  href={item.value}
                 >
-                  X
-                </button>
-                {/* Sidebar Content */}
-                {listMenuHeader.map((item, inx) => {
-                  return (
-                    <Link
-                      className="bg-[#d4b072] rounded-[40px] text-[#413828] text-center py-[10px] my-1 mx-[2px]"
+                  {item.label}
+                </Link>
+              ))}
+              <p
+                onClick={handleOpenGameRule}
+                className="p-4 border-t-[2px] border-solid border-t-[#9e865e] text-center text-white mt-4 border-b-[2px] border-b-[#413828]"
+              >
+                Game Rule
+              </p>
+              {openGameRule && (
+                <ul className="bg-[#4c4029]">
+                  {listGameRules.map((item, inx) => (
+                    <li
+                      className="p-[10px] text-center text-[#d4b072] border-b border-[#413828] border-solid"
                       key={inx}
-                      href={item.value}
                     >
-                      {' '}
-                      {item.label}
-                    </Link>
-                  );
-                })}
-                <p
-                  onClick={(e) => handleOpenGameRule(e)}
-                  className="p-4 border-t-[2px] border-solid border-t-[#9e865e] text-center text-white mt-4 border-b-[2px] border-b-[#413828]"
-                >
-                  Game Rule
-                </p>
-                {openGameRule && (
-                  <ul className="bg-[#4c4029] overflow-auto">
-                    {listGameRules.map((item, inx) => {
-                      return (
-                        <li
-                          className="p-[10px] text-center text-[#d4b072]"
-                          key={inx}
-                        >
-                          <Link href={item.value}>{item.label}</Link>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                )}
-
-                <ul className="m-[10px]">
-                  {listMenuHeader.map((item, inx) => {
-                    return (
-                      <li
-                        className="my-1 mx-[2px] text-[#9e865e] bg-[#413828] rounded-[5px] py-4 text-center"
-                        key={inx}
-                      >
-                        <Link href={item.value}>{item.label}</Link>
-                      </li>
-                    );
-                  })}
+                      <Link href={item.value}>{item.label}</Link>
+                    </li>
+                  ))}
                 </ul>
-              </div>
+              )}
+              <ul className="m-[10px]">
+                {listMenuHeader.map((item, inx) => (
+                  <li
+                    className="my-1 mx-[2px] text-[#9e865e] bg-[#413828] rounded-[5px] py-3 text-center"
+                    key={inx}
+                  >
+                    <Link href={item.value}>{item.label}</Link>
+                  </li>
+                ))}
+              </ul>
             </div>
-          </section>
-        </div>
-      )}
+          </div>
+        </section>
+      </div>
     </div>
   );
 };

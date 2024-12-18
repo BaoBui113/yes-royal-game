@@ -74,34 +74,12 @@
 .sitemenu > li:hover > ul {
   opacity: 1;
 }
-
-/* .sitemenu > li:hover > ul {
-  padding: 20px 0;
-  border-radius: 10px;
-  opacity: 1;
-} */
-
-/* .sitemenu > li:hover > ul {
-  opacity: 1;
+.header-mobile {
+  background: linear-gradient(180deg, #36261a 0%, #322318 8.5%, #060504 100%),
+    radial-gradient(
+      52.69% 43.6% at 25.26% -12.79%,
+      #f99850 0%,
+      rgba(54, 38, 26, 0) 100%
+    );
+  box-shadow: 0px 2px 8.9px 1px #000000;
 }
-
-.sitemenu > li > ul > li > a {
-  display: block;
-  height: 0px;
-  padding: 0;
-  line-height: 25px;
-  text-align: center;
-  overflow: hidden;
-  transition: all ease 0.2s;
-  font-size: 12px;
-}
-
-.sitemenu > li:hover > ul > li > a {
-  color: #7a5a3d;
-  height: 25px;
-}
-
-.sitemenu > li:hover > ul > li > a:hover {
-  background: #333;
-  color: #e2c396;
-} */

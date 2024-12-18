@@ -32,6 +32,23 @@ interface AuthContextType {
   handleShowModalSideBar: () => void;
   isModalSidebar: boolean;
   setIsModalSideBar: React.Dispatch<React.SetStateAction<boolean>>;
+  handleCloseModalSideBar: () => void;
+  handleShowModalSidebarAuth: () => void;
+  isModalSidebarAuth: boolean;
+  setIsModalSidebarAuth: React.Dispatch<React.SetStateAction<boolean>>;
+  handleCloseModalSidebarAuth: () => void;
+  handleShowModalMyPageHistoryPoint: () => void;
+  handleShowModalMyPageInfoMember: () => void;
+  isModalMyPage: {
+    historyPoint: boolean;
+    infoMember: boolean;
+  };
+  setIsModalMyPage: React.Dispatch<
+    React.SetStateAction<{
+      historyPoint: boolean;
+      infoMember: boolean;
+    }>
+  >;
 }
 
 // Create AuthContext
@@ -51,6 +68,11 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [isModalDepositNotice, setIsModalDepositNotice] = useState(false);
   const [isModalSendPhoneSms, setIsModalSendPhoneSms] = useState(false);
   const [isModalSidebar, setIsModalSideBar] = useState(false);
+  const [isModalSidebarAuth, setIsModalSidebarAuth] = useState(false);
+  const [isModalMyPage, setIsModalMyPage] = useState({
+    historyPoint: false,
+    infoMember: false,
+  });
   const [selectGameRun, setSelectGameRun] = useState(1);
   useEffect(() => {
     const auth = localStorage.getItem('informationUserYesRoyal');
@@ -64,6 +86,34 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       }
     }
   }, []);
+
+  const handleShowModalMyPageHistoryPoint = () => {
+    setIsModalMyPage({
+      historyPoint: !isModalMyPage.historyPoint,
+      infoMember: false,
+    });
+  };
+
+  const handleShowModalMyPageInfoMember = () => {
+    setIsModalMyPage({
+      historyPoint: false,
+      infoMember: !isModalMyPage.infoMember,
+    });
+  };
+
+  const handleShowModalSidebarAuth = () => {
+    if (isModalSidebar) {
+      setIsModalSideBar(false);
+    }
+    setIsModalSidebarAuth(!isModalSidebarAuth);
+  };
+
+  const handleCloseModalSidebarAuth = () => {
+    if (isModalSidebar) {
+      setIsModalSideBar(false);
+    }
+    setIsModalSidebarAuth(!isModalSidebarAuth);
+  };
 
   const handleShowModalLogin = () => {
     setIsModalLoginOpen(true);
@@ -85,8 +135,18 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     setIsModalSendPhoneSms(true);
   };
 
+  const handleCloseModalSideBar = () => {
+    if (isModalSidebarAuth) {
+      setIsModalSidebarAuth(false);
+    }
+    setIsModalSideBar(!isModalSidebar);
+  };
+
   const handleShowModalSideBar = () => {
-    setIsModalSideBar(true);
+    if (isModalSidebarAuth) {
+      setIsModalSidebarAuth(false);
+    }
+    setIsModalSideBar(!isModalSidebar);
   };
 
   const login = (auth: string) => {
@@ -94,6 +154,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       const parseAuth: IProfile = JSON.parse(auth);
       setUser(parseAuth);
       localStorage.setItem('informationUserYesRoyal', auth);
+      document.cookie = `informationUserYesRoyal=${auth}`;
     } catch (error) {
       console.error('Login failed: invalid auth', error);
     }
@@ -130,6 +191,15 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         isModalSidebar,
         setIsModalSideBar,
         handleShowModalSideBar,
+        handleShowModalSidebarAuth,
+        isModalSidebarAuth,
+        setIsModalSidebarAuth,
+        handleCloseModalSidebarAuth,
+        handleCloseModalSideBar,
+        handleShowModalMyPageHistoryPoint,
+        handleShowModalMyPageInfoMember,
+        isModalMyPage,
+        setIsModalMyPage,
       }}
     >
       {children}

@@ -22,8 +22,9 @@ export const customFetch = async (url: string, options: FetchOptions = {}) => {
       const errorData = { message: 'Unauthorized', status: 401 };
       return errorData;
     }
+
     if (!response.ok) {
-      const errorData = await response.json();
+      const errorData = { message: 'Error', status: response.status };
       return errorData;
     }
 

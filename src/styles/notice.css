@@ -1,15 +1,15 @@
 .bottom .active {
   opacity: 1;
 }
-.bottom #board_N a {
+.bottom #board_N span {
   background-position: 0px 0px;
 }
 
-.bottom #board_E a {
+.bottom #board_E span {
   background-position: 0px -90px;
 }
 
-.bottom #board_F a {
+.bottom #board_F span {
   background-position: 0px -180px;
 }
 
@@ -20,4 +20,15 @@
   right: 10px;
   top: 10px;
   display: block;
+}
+.text-active {
+  background: linear-gradient(
+    180deg,
+    #b59354 0%,
+    #f9e68a 35%,
+    #96723f 72.5%,
+    #f9e68a 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }

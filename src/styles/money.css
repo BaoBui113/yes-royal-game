@@ -164,3 +164,15 @@
   opacity: 1;
   animation: moneymenu-ani infinite alternate 0.5s;
 }
+
+.text-moneymenu {
+  background: linear-gradient(
+    180deg,
+    #b59354 0%,
+    #f9e68a 35%,
+    #96723f 72.5%,
+    #f9e68a 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
