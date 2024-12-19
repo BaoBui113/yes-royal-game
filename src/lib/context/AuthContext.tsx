@@ -12,20 +12,17 @@ interface AuthContextType {
   user: IProfile | null;
   login: (token: string) => void;
   logout: () => void;
+  closeModal: () => void;
   isModalLoginOpen: boolean;
   setIsModalLoginOpen: React.Dispatch<React.SetStateAction<boolean>>;
   handleShowModalLogin: () => void;
   selectGameRun: number;
   setSelectGameRun: (value: number) => void;
-  isModalDepositOpen: boolean;
-  setIsModalDepositOpen: React.Dispatch<React.SetStateAction<boolean>>;
   handleShowModalDeposit: () => void;
   handleShowModalDepositNotice: () => void;
   isModalDepositNotice: boolean;
   setIsModalDepositNotice: React.Dispatch<React.SetStateAction<boolean>>;
   handleShowModalWithDraw: () => void;
-  isModalWithdrawOpen: boolean;
-  setIsModalWithdrawOpen: React.Dispatch<React.SetStateAction<boolean>>;
   handleShowModalSendPhoneSms: () => void;
   isModalSendPhoneSms: boolean;
   setIsModalSendPhoneSms: React.Dispatch<React.SetStateAction<boolean>>;
@@ -49,6 +46,16 @@ interface AuthContextType {
       infoMember: boolean;
     }>
   >;
+  statusModal: string;
+  handleShowModalConvertPoint: () => void;
+  setStatusModal: React.Dispatch<React.SetStateAction<string>>;
+  handleShowModalHistoryDeposit: () => void;
+  handleShowModalNotice: () => void;
+  handleShowModalEvent: () => void;
+  handleShowModalFAQ: () => void;
+  handleShowModalSecretAccount: () => void;
+  handleShowModalRemoteSupport: () => void;
+  handleShowModalPcGuard: () => void;
 }
 
 // Create AuthContext
@@ -63,12 +70,11 @@ interface AuthProviderProps {
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [user, setUser] = useState<IProfile | null>(null);
   const [isModalLoginOpen, setIsModalLoginOpen] = useState(false);
-  const [isModalDepositOpen, setIsModalDepositOpen] = useState(false);
-  const [isModalWithdrawOpen, setIsModalWithdrawOpen] = useState(false);
   const [isModalDepositNotice, setIsModalDepositNotice] = useState(false);
   const [isModalSendPhoneSms, setIsModalSendPhoneSms] = useState(false);
   const [isModalSidebar, setIsModalSideBar] = useState(false);
   const [isModalSidebarAuth, setIsModalSidebarAuth] = useState(false);
+  const [statusModal, setStatusModal] = useState('');
   const [isModalMyPage, setIsModalMyPage] = useState({
     historyPoint: false,
     infoMember: false,
@@ -86,12 +92,57 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       }
     }
   }, []);
-
+  const closeModal = () => {
+    setStatusModal('');
+  };
   const handleShowModalMyPageHistoryPoint = () => {
     setIsModalMyPage({
       historyPoint: !isModalMyPage.historyPoint,
       infoMember: false,
     });
+  };
+
+  const handleShowModalConvertPoint = () => {
+    setStatusModal('convertPoint');
+  };
+  const handleShowModalHistoryDeposit = () => {
+    setStatusModal('historyDeposit');
+  };
+
+  const handleShowModalWithDraw = () => {
+    setStatusModal('withdraw');
+  };
+
+  const handleShowModalDeposit = () => {
+    setStatusModal('deposit');
+  };
+
+  const handleShowModalNotice = () => {
+    setStatusModal('notice');
+  };
+
+  const handleShowModalEvent = () => {
+    setStatusModal('event');
+  };
+
+  const handleShowModalFAQ = () => {
+    setStatusModal('faq');
+  };
+
+  const handleShowModalSecretAccount = () => {
+    setStatusModal('secretAccount');
+  };
+
+  const handleShowModalRemoteSupport = () => {
+    setStatusModal('remoteSupport');
+  };
+
+  const handleShowModalPcGuard = () => {
+    setStatusModal('pcGuard');
+  };
+
+  const handleShowModalDepositNotice = () => {
+    setIsModalDepositNotice(true);
   };
 
   const handleShowModalMyPageInfoMember = () => {
@@ -117,18 +168,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   const handleShowModalLogin = () => {
     setIsModalLoginOpen(true);
-  };
-
-  const handleShowModalWithDraw = () => {
-    setIsModalWithdrawOpen(true);
-  };
-
-  const handleShowModalDeposit = () => {
-    setIsModalDepositOpen(true);
-  };
-
-  const handleShowModalDepositNotice = () => {
-    setIsModalDepositNotice(true);
   };
 
   const handleShowModalSendPhoneSms = () => {
@@ -171,11 +210,11 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         user,
         login,
         logout,
+        closeModal,
         setIsModalLoginOpen,
         isModalLoginOpen,
         handleShowModalLogin,
-        isModalDepositOpen,
-        setIsModalDepositOpen,
+        handleShowModalNotice,
         handleShowModalDeposit,
         selectGameRun,
         setSelectGameRun,
@@ -183,8 +222,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         isModalDepositNotice,
         setIsModalDepositNotice,
         handleShowModalWithDraw,
-        isModalWithdrawOpen,
-        setIsModalWithdrawOpen,
         handleShowModalSendPhoneSms,
         isModalSendPhoneSms,
         setIsModalSendPhoneSms,
@@ -200,6 +237,15 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         handleShowModalMyPageInfoMember,
         isModalMyPage,
         setIsModalMyPage,
+        statusModal,
+        handleShowModalConvertPoint,
+        setStatusModal,
+        handleShowModalHistoryDeposit,
+        handleShowModalEvent,
+        handleShowModalFAQ,
+        handleShowModalSecretAccount,
+        handleShowModalRemoteSupport,
+        handleShowModalPcGuard,
       }}
     >
       {children}

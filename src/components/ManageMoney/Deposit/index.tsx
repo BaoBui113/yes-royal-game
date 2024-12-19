@@ -5,12 +5,11 @@ import ManageMoney from '..';
 import FormDeposit from './FormDeposit';
 
 export default function Deposit() {
-  const { isModalDepositOpen, setIsModalDepositOpen } = useAuth();
-  const closeModal = () => setIsModalDepositOpen(false);
+  const { statusModal, closeModal } = useAuth();
   return (
     <ManageMoney
       className="bg-[url('/assets/image/deposit/title_deposit.png')]"
-      isOpen={isModalDepositOpen}
+      isOpen={statusModal === 'deposit'}
       onClose={closeModal}
     >
       <FormDeposit />

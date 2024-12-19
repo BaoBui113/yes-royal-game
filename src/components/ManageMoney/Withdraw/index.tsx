@@ -6,11 +6,11 @@ import ManageMoney from '..';
 import FormWithDraw from './FormWithDraw';
 
 export default function ModalWithDraw() {
-  const { setIsModalWithdrawOpen, isModalWithdrawOpen } = useAuth();
-  const closeModal = () => setIsModalWithdrawOpen(false);
+  const { statusModal, closeModal } = useAuth();
+
   return (
     <ManageMoney
-      isOpen={isModalWithdrawOpen}
+      isOpen={statusModal === 'withdraw'}
       onClose={closeModal}
       className="bg-[url('/assets/image/deposit/title_withdraw.png')]"
     >

@@ -7,7 +7,11 @@ import Deposit from '@/components/ManageMoney/Deposit';
 import ModalNoticeDeposit from '@/components/ManageMoney/Deposit/ModalNoticeDeposit';
 import SendPhoneSms from '@/components/ManageMoney/SendPhoneSms';
 import ModalWithDraw from '@/components/ManageMoney/Withdraw';
-import ModalInfoMember from '@/components/ModalInfoMember';
+import ModalBoard from '@/components/ModalBoard';
+import ModalMember from '@/components/ModalMember';
+import ModalConvertHistoryPoint from '@/components/ModalMember/ModalConvertHistoryPoint';
+import ModalHistoryDeposit from '@/components/ModalMember/ModalHistoryDeposit';
+import OtherMenu from '@/components/ModalOtherMenu';
 import SidebarAuthMobile from '@/components/ModalSidebarAuth';
 import Sidebar from '@/components/ModalSideBarMobile';
 import MoneyMenu from '@/components/MoneyMenu';
@@ -29,7 +33,11 @@ export default function Home() {
       <ModalNoticeDeposit />
       <ModalWithDraw />
       <SendPhoneSms />
-      <ModalInfoMember />
+      <ModalMember />
+      <ModalConvertHistoryPoint />
+      <ModalHistoryDeposit />
+      <ModalBoard />
+      <OtherMenu />
     </section>
   );
 }

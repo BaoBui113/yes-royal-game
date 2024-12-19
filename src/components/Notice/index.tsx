@@ -3,9 +3,9 @@ import NoticeDesktop from './NoticeDesktop';
 import NoticeMobile from './NoticeMobile';
 
 export default async function Notice() {
-  const dataNotice = await getNotice();
-  const dataEvent = await getEvent();
-  const dataFAQ = await getFAQ();
+  const dataNotice = await getNotice({ limit: '6', page: '1' });
+  const dataEvent = await getEvent({ limit: '6', page: '1' });
+  const dataFAQ = await getFAQ({ limit: '6', page: '1' });
   return (
     <>
       <NoticeDesktop

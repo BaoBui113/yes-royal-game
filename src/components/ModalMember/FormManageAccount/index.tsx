@@ -7,15 +7,18 @@ import { Controller, useForm } from 'react-hook-form';
 import * as yup from 'yup';
 
 const schema = yup.object().shape({
-  password: yup.string().required('Password is required'),
-  new_password: yup.string().required('New password is required'),
-  confirm_password: yup
-    .string()
-    .required('Confirm password is required')
-    .oneOf([yup.ref('new_password'), ''], 'Passwords must match'),
+  bank: yup.string().required('Bank is required'),
+  holder: yup.string().required('Holder is required'),
+  account_number: yup.string().required('Account is required'),
 });
 export type FormDepositType = yup.InferType<typeof schema>;
-export default function FormManageAccount() {
+export default function FormManageAccount({
+  bankList,
+  holder,
+}: {
+  bankList: { BANK_CD: number; BANK_NM: string }[];
+  holder: { BANK_CD?: number; ACC_NAME?: string };
+}) {
   const { user, setIsModalDepositOpen } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
   const {
@@ -25,9 +28,9 @@ export default function FormManageAccount() {
   } = useForm({
     resolver: yupResolver(schema),
     defaultValues: {
-      password: '',
-      new_password: '',
-      confirm_password: '',
+      bank: '',
+      holder: `${holder?.ACC_NAME}${holder?.BANK_CD}` || '',
+      account_number: '',
     },
   });
   const onSubmit = async (data: FormDepositType) => {
@@ -66,39 +69,43 @@ export default function FormManageAccount() {
             현재비밀번호
           </p>
           <Controller
-            name="password"
+            name="bank"
             control={control}
+            defaultValue=""
             render={({ field }) => (
-              <>
-                <div className="flex flex-col gap-1">
-                  <div className="flex gap-2">
-                    <input
-                      type="text"
-                      {...field}
-                      className="h-[26px] w-[120px] bg-[#060708] text-[#bd7a41] px-1 rounded text-xs custom-select"
-                    />
-                    <span className="text-[#948477] text-sm">
-                      {' '}
-                      * 현재 사용하고 계시는 비밀번호를 입력하세요.
-                    </span>
-                  </div>
-                  {errors.password && (
-                    <p className="text-red-500 text-xs">
-                      {errors.password.message}
-                    </p>
-                  )}
-                </div>
-              </>
+              <div>
+                <select
+                  {...field}
+                  className="w-[120px] h-[26px] bg-[#060708] text-[#bd7a41] px-1 rounded cursor-pointer custom-select text-xs"
+                >
+                  <option className="text-center" value="">
+                    --선택--
+                  </option>
+                  {bankList.length > 0 &&
+                    bankList.map((bank) => (
+                      <option
+                        className="text-center"
+                        key={bank.BANK_CD}
+                        value={bank.BANK_CD}
+                      >
+                        {bank.BANK_NM}
+                      </option>
+                    ))}
+                </select>
+                {errors.bank && (
+                  <p className="text-red-500 text-xs">{errors.bank.message}</p>
+                )}
+              </div>
             )}
           />
         </div>
-        {/* New password */}
+        {/* Holder */}
         <div className="flex items-center px-[5px] py-2  border border-t border-dotted border-[#2f271e]">
           <p className="w-[150px] text-center text-[#fdcc83] text-xs font-bold">
-            새로운 비밀번호
+            예금주
           </p>
           <Controller
-            name="new_password"
+            name="holder"
             control={control}
             render={({ field }) => (
               <>
@@ -114,9 +121,9 @@ export default function FormManageAccount() {
                       * 새로운 비밀번호를 입력하세요.
                     </span>
                   </div>
-                  {errors.new_password && (
+                  {errors.holder && (
                     <p className="text-red-500 text-xs">
-                      {errors.new_password.message}
+                      {errors.holder.message}
                     </p>
                   )}
                 </div>
@@ -124,13 +131,13 @@ export default function FormManageAccount() {
             )}
           />
         </div>
-        {/* Confirm Password */}
+        {/* Account number */}
         <div className="flex items-center px-[5px] py-2  border border-t border-dotted border-[#2f271e]">
           <p className="w-[150px] text-center text-[#fdcc83] text-xs font-bold">
             새로운비밀번호 확인
           </p>
           <Controller
-            name="confirm_password"
+            name="account_number"
             control={control}
             render={({ field }) => (
               <>
@@ -141,13 +148,10 @@ export default function FormManageAccount() {
                       {...field}
                       className="h-[26px] w-[120px] bg-[#060708] text-[#bd7a41] px-1 rounded text-xs custom-select"
                     />
-                    <span className="text-[#948477] text-sm">
-                      * 새로운 비밀번호를 다시 한번 입력하세요.
-                    </span>
                   </div>
-                  {errors.confirm_password && (
+                  {errors.account_number && (
                     <p className="text-red-500 text-xs">
-                      {errors.confirm_password.message}
+                      {errors.account_number.message}
                     </p>
                   )}
                 </div>
@@ -155,13 +159,7 @@ export default function FormManageAccount() {
             )}
           />
         </div>
-        <div className="flex items-center px-[5px] py-2">
-          <p className="w-[150px] text-center text-[#fdcc83] text-xs font-bold">
-            추천인 아이디
-          </p>
-        </div>
       </div>
-
       <div className="flex justify-center mt-4">
         <Button
           isLoading={isLoading}

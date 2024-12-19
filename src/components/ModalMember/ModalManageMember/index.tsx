@@ -29,25 +29,29 @@ export default function MyPage() {
       ...isModalMyPage,
       infoMember: false,
     });
-  const [bankList, setBankList] = useState({});
+  const [bankList, setBankList] = useState([]);
+  const [holder, setHolder] = useState({
+    BANK_CD: undefined,
+    ACC_NAME: undefined,
+  });
   const [status, setStatus] = useState('infoUserRegister');
   const getMyPage = async () => {
     try {
       if (!user) return;
       const res = await onMyPage({ username: user.MEM_LID });
-      console.log('res 22222', res);
 
       if (res.status === '0') {
-        setBankList(res.BANK_LIST);
+        setBankList(Object.values(res.BANK_LIST));
+        setHolder(res.LAST_BANK_INFO);
       }
     } catch (error) {
       console.log('error', error);
     }
   };
   useEffect(() => {
+    if (!user || !isModalMyPage.infoMember) return;
     getMyPage();
-  }, []);
-  console.log('bankList', bankList);
+  }, [user, isModalMyPage.infoMember]);
 
   return (
     <ManageMoney
@@ -73,7 +77,9 @@ export default function MyPage() {
       <div className="mt-6">
         {status === 'infoUserRegister' && <FormUserRegister />}
         {status === 'changePhone' && <FormChangePhone />}
-        {status === 'manageAccount' && <FormManageAccount />}
+        {status === 'manageAccount' && (
+          <FormManageAccount bankList={bankList} holder={holder} />
+        )}
       </div>
     </ManageMoney>
   );

@@ -11,11 +11,11 @@ const footers = [
       },
       {
         title: '쿠폰내역',
-        link: '',
+        link: '/convert-point',
       },
       {
         title: '입출금내역',
-        link: '',
+        link: '/history-deposit',
       },
     ],
   },
@@ -24,11 +24,11 @@ const footers = [
     data: [
       {
         title: '입금신청',
-        link: '',
+        link: '/deposit',
       },
       {
         title: '출금신청',
-        link: '',
+        link: '/withdraw',
       },
       {
         title: '이벤트신청',
@@ -41,15 +41,15 @@ const footers = [
     data: [
       {
         title: '공지사항',
-        link: '',
+        link: '/notice',
       },
       {
         title: '이벤트안내',
-        link: '',
+        link: '/event',
       },
       {
         title: '자주묻는질문',
-        link: '',
+        link: '/faq',
       },
       {
         title: '랭킹',
@@ -62,19 +62,19 @@ const footers = [
     data: [
       {
         title: '1인보안계좌',
-        link: '',
+        link: '/secret-account',
       },
       {
         title: '1:1원격지원',
-        link: '',
+        link: '/remote-support',
       },
       {
         title: 'PC안전지킴이',
-        link: '',
+        link: '/pc-guard',
       },
       {
         title: '모바일서비스',
-        link: '',
+        link: '/mobile-service',
       },
       {
         title: '파트너제휴',
@@ -100,13 +100,66 @@ const footers = [
   },
 ];
 export default function FooterDesktop() {
-  const { handleShowModalMyPageInfoMember } = useAuth();
+  const {
+    handleShowModalMyPageInfoMember,
+    handleShowModalConvertPoint,
+    handleShowModalHistoryDeposit,
+    handleShowModalDeposit,
+    handleShowModalWithDraw,
+    handleShowModalNotice,
+    handleShowModalEvent,
+    handleShowModalFAQ,
+    handleShowModalSecretAccount,
+    handleShowModalRemoteSupport,
+    handleShowModalPcGuard,
+  } = useAuth();
   const handleShowNodalFooter = (item: { title: string; link: string }) => {
     if (item.link === '/info-member') {
       handleShowModalMyPageInfoMember();
       return;
     }
+    if (item.link === '/convert-point') {
+      handleShowModalConvertPoint();
+      return;
+    }
+    if (item.link === '/history-deposit') {
+      handleShowModalHistoryDeposit();
+      return;
+    }
+    if (item.link === '/deposit') {
+      handleShowModalDeposit();
+      return;
+    }
+    if (item.link === '/withdraw') {
+      handleShowModalWithDraw();
+      return;
+    }
+    if (item.link === '/notice') {
+      handleShowModalNotice();
+      return;
+    }
+    if (item.link === '/event') {
+      handleShowModalEvent();
+      return;
+    }
+    if (item.link === '/faq') {
+      handleShowModalFAQ();
+      return;
+    }
+    if (item.link === '/secret-account') {
+      handleShowModalSecretAccount();
+      return;
+    }
+    if (item.link === '/remote-support') {
+      handleShowModalRemoteSupport();
+      return;
+    }
+    if (item.link === '/pc-guard') {
+      handleShowModalPcGuard();
+      return;
+    }
   };
+
   return (
     <section className="bg-black xl:block hidden">
       <nav className="max-w-[1200px] mx-auto py-[30px]">
