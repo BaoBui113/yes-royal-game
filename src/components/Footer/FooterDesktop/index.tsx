@@ -85,7 +85,7 @@ const footers = [
   {
     title: 'HOW TO PLAY',
     data: [
-      { title: '바카라', link: '' },
+      { title: '바카라', link: '/baccarat' },
       { title: '블랙잭', link: '' },
       { title: '룰렛', link: '' },
       { title: '식보', link: '' },
@@ -112,6 +112,9 @@ export default function FooterDesktop() {
     handleShowModalSecretAccount,
     handleShowModalRemoteSupport,
     handleShowModalPcGuard,
+    handleShowModalMobileService,
+    handleGameRule,
+    setStatusGameRule,
   } = useAuth();
   const handleShowNodalFooter = (item: { title: string; link: string }) => {
     if (item.link === '/info-member') {
@@ -158,6 +161,15 @@ export default function FooterDesktop() {
       handleShowModalPcGuard();
       return;
     }
+    if (item.link === '/mobile-service') {
+      handleShowModalMobileService();
+      return;
+    }
+    if (item.link === '/baccarat') {
+      handleGameRule();
+      setStatusGameRule(1);
+      return;
+    }
   };
 
   return (
@@ -172,7 +184,10 @@ export default function FooterDesktop() {
               {item.title === 'HOW TO PLAY' ? (
                 <ul className="grid grid-cols-2">
                   {item.data.map((subItem, subInd) => (
-                    <li key={subInd}>
+                    <li
+                      onClick={() => handleShowNodalFooter(subItem)}
+                      key={subInd}
+                    >
                       <span className="text-[#67563E] text-xs cursor-pointer hover:text-[#e2c396] duration-100 transition-all ease-linear">
                         {subItem.title}
                       </span>

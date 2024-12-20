@@ -8,6 +8,7 @@ import ModalNoticeDeposit from '@/components/ManageMoney/Deposit/ModalNoticeDepo
 import SendPhoneSms from '@/components/ManageMoney/SendPhoneSms';
 import ModalWithDraw from '@/components/ManageMoney/Withdraw';
 import ModalBoard from '@/components/ModalBoard';
+import ModalGameRule from '@/components/ModalGameRule';
 import ModalMember from '@/components/ModalMember';
 import ModalConvertHistoryPoint from '@/components/ModalMember/ModalConvertHistoryPoint';
 import ModalHistoryDeposit from '@/components/ModalMember/ModalHistoryDeposit';
@@ -38,6 +39,7 @@ export default function Home() {
       <ModalHistoryDeposit />
       <ModalBoard />
       <OtherMenu />
+      <ModalGameRule />
     </section>
   );
 }

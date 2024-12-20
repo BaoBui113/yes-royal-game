@@ -56,6 +56,10 @@ interface AuthContextType {
   handleShowModalSecretAccount: () => void;
   handleShowModalRemoteSupport: () => void;
   handleShowModalPcGuard: () => void;
+  handleShowModalMobileService: () => void;
+  handleGameRule: () => void;
+  setStatusGameRule: React.Dispatch<React.SetStateAction<number>>;
+  statusGameRule: number;
 }
 
 // Create AuthContext
@@ -75,6 +79,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [isModalSidebar, setIsModalSideBar] = useState(false);
   const [isModalSidebarAuth, setIsModalSidebarAuth] = useState(false);
   const [statusModal, setStatusModal] = useState('');
+  const [statusGameRule, setStatusGameRule] = useState(1);
   const [isModalMyPage, setIsModalMyPage] = useState({
     historyPoint: false,
     infoMember: false,
@@ -139,6 +144,14 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   const handleShowModalPcGuard = () => {
     setStatusModal('pcGuard');
+  };
+
+  const handleShowModalMobileService = () => {
+    setStatusModal('mobileService');
+  };
+
+  const handleGameRule = () => {
+    setStatusModal('gameRule');
   };
 
   const handleShowModalDepositNotice = () => {
@@ -246,6 +259,10 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         handleShowModalSecretAccount,
         handleShowModalRemoteSupport,
         handleShowModalPcGuard,
+        handleShowModalMobileService,
+        handleGameRule,
+        setStatusGameRule,
+        statusGameRule,
       }}
     >
       {children}
