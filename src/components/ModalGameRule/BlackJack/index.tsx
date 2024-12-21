@@ -1,3 +1,5 @@
+import { ListInfoGameRule } from '../ListInfoGameRule';
+
 const listDataBlackJack = [
   {
     title: '용어 설명',
@@ -78,18 +80,6 @@ const ListRuleBlackJack = ({
   );
 };
 
-const ListBlackJack = ({ title, data }: { title: string; data: string[] }) => {
-  return (
-    <>
-      <h3 className="text-base my-4">{title}</h3>
-      <ul className="pl-10 space-y-1 list-disc marker:text-[#948477]">
-        {data.map((item, index) => {
-          return <li key={index}>{item}</li>;
-        })}
-      </ul>
-    </>
-  );
-};
 export default function BlackJack() {
   return (
     <>
@@ -112,7 +102,7 @@ export default function BlackJack() {
       </p>
       {listDataBlackJack.map((blackJack, index) => {
         return (
-          <ListBlackJack
+          <ListInfoGameRule
             key={index}
             title={blackJack.title}
             data={blackJack.data}

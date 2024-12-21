@@ -1,9 +1,15 @@
 'use client';
 import { useAuth } from '@/lib/context/AuthContext';
 import Baccarat from '../Baccarat';
+import BaccaratInsurance from '../Baccarat_Insurance';
 import BlackJack from '../BlackJack';
+import Caribbean from '../Caribbean';
+import Crazy21 from '../Crazy21';
+import Devil from '../Devil';
+import DragonTiger from '../DragonTiger';
 import Roulette from '../Roulette';
 import SicBo from '../SicBo';
+import TripleFaceCard from '../TripleFaceCard';
 
 const listGameRule = [
   '바카라',
@@ -41,11 +47,17 @@ export default function CommonGameRule() {
           );
         })}
       </ul>
-      <div className="bg-[#060708] border border-solid border-[#2f271e] p-2 overflow-auto my-[10px] mx-5 h-[300px] text-[#948477] text-sm custom-scroll-bar">
+      <div className="bg-[#060708] border border-solid border-[#2f271e] p-2 overflow-auto my-[10px] mx-5 h-[320px] text-[#948477] text-sm custom-scroll-bar">
         {statusGameRule === 1 && <Baccarat />}
         {statusGameRule === 2 && <BlackJack />}
         {statusGameRule === 3 && <Roulette />}
         {statusGameRule === 4 && <SicBo />}
+        {statusGameRule === 5 && <DragonTiger />}
+        {statusGameRule === 6 && <Crazy21 />}
+        {statusGameRule === 7 && <BaccaratInsurance />}
+        {statusGameRule === 8 && <Caribbean />}
+        {statusGameRule === 10 && <TripleFaceCard />}
+        {statusGameRule === 11 && <Devil />}
       </div>
     </div>
   );

@@ -1,48 +1,54 @@
 import Image from 'next/image';
-const Tables = ({
-  headers,
-  data,
-}: {
-  headers: string[];
-  data: { player1: string; player2: string }[];
-}) => {
+interface TableProps {
+  tables: {
+    headers: { key: string; value: string }[];
+    data: Record<string, string>[];
+  }[];
+}
+
+const Tables = ({ tables }: TableProps) => {
   return (
-    <>
-      <table className="w-full bg-[#4a3629]  text-center border-collapse">
-        <tbody>
-          <tr className="bg-[#31231a] text-[#fdcc83] border border-solid border-[#4a3629] text-sm">
-            {headers.map((header, inx) => {
-              return (
+    <div className="space-y-4">
+      {tables.map((table, tableIndex) => (
+        <table
+          key={tableIndex}
+          className="w-full bg-[#4a3629] text-center border-collapse"
+        >
+          <thead>
+            <tr className="bg-[#31231a] text-[#fdcc83] border border-solid border-[#4a3629] text-sm">
+              {table.headers.map((header, inx) => (
                 <th
                   key={inx}
-                  className="w-1/2 p-[10px] border border-solid border-[#4a3629]"
+                  className="w-auto p-[10px] border border-solid border-[#4a3629]"
                 >
-                  {header}
+                  {header.value}
                 </th>
-              );
-            })}
-          </tr>
-
-          {data.map((item, index) => {
-            return (
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {table.data.map((row, rowIndex) => (
               <tr
-                key={index}
+                key={rowIndex}
                 className="p-1 bg-[#000] text-[#90553e] border border-solid border-[#4a3629] text-center"
               >
-                <td className="border border-solid border-[#4a3629]">
-                  {item.player1}
-                </td>
-                <td className="border border-solid border-[#4a3629]">
-                  {item.player2}
-                </td>
+                {table.headers.map((header, cellIndex) => (
+                  <td
+                    key={cellIndex}
+                    className="border border-solid border-[#4a3629]"
+                  >
+                    {row[header.key] || ''}
+                  </td>
+                ))}
               </tr>
-            );
-          })}
-        </tbody>
-      </table>
-    </>
+            ))}
+          </tbody>
+        </table>
+      ))}
+    </div>
   );
 };
+
 export default function Baccarat() {
   return (
     <>
@@ -117,11 +123,18 @@ export default function Baccarat() {
       </ul>
       <h3 className="my-[14px] text-base">플레이어 규칙</h3>
       <Tables
-        headers={['PLAYER 처음 두 카드의 총합이', 'PLAYER 액션']}
-        data={[
-          { player1: '0, 1, 2, 3, 4, 5', player2: '패뽑기' },
-          { player1: '6, 7', player2: '멈추기' },
-          { player1: '8, 9', player2: '멈추기(자연)' },
+        tables={[
+          {
+            headers: [
+              { key: 'player1', value: 'PLAYER 처음 두 카드의 총합이' },
+              { key: 'player2', value: 'PLAYER 액션' },
+            ],
+            data: [
+              { player1: '0, 1, 2, 3, 4, 5', player2: '패뽑기' },
+              { player1: '6, 7', player2: '멈추기' },
+              { player1: '8, 9', player2: '멈추기(자연)' },
+            ],
+          },
         ]}
       />
       <p className="my-[14px]">
@@ -130,11 +143,18 @@ export default function Baccarat() {
       </p>
       <h3 className="my-4">뱅커 규칙</h3>
       <Tables
-        headers={['BANKER 처음 두 카드의 총합이', 'BANKER 액션']}
-        data={[
-          { player1: '0, 1, 2, 3, 4, 5', player2: '패뽑기' },
-          { player1: '6, 7', player2: '멈추기' },
-          { player1: '8, 9', player2: '멈추기(자연)' },
+        tables={[
+          {
+            headers: [
+              { key: 'player1', value: 'BANKER 처음 두 카드의 총합이' },
+              { key: 'player2', value: 'BANKER 액션' },
+            ],
+            data: [
+              { player1: '0, 1, 2, 3, 4, 5', player2: '패뽑기' },
+              { player1: '6, 7', player2: '멈추기' },
+              { player1: '8, 9', player2: '멈추기(자연)' },
+            ],
+          },
         ]}
       />
       <p className="my-[14px]">
