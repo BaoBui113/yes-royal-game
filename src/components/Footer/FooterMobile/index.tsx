@@ -3,7 +3,8 @@ import { useAuth } from '@/lib/context/AuthContext';
 import Image from 'next/image';
 
 export default function FooterMobile() {
-  const { handleShowModalSidebarAuth, handleShowModalSideBar } = useAuth();
+  const { handleShowModalSidebarAuth, handleShowModalSideBar, statusModal } =
+    useAuth();
   return (
     <div className="xl:hidden block">
       <div className="bg-black text-[#B6A26F] text-center py-6 pb-[90px]">
@@ -14,7 +15,13 @@ export default function FooterMobile() {
           background:
             'linear-gradient(180deg, #1F1610 0%, #543B2B 80%, #855E45 100%)',
         }}
-        className="fixed bottom-0 left-0 right-0 h-[60px] z-[100] flex items-center justify-between px-9"
+        className={`fixed bottom-0 w-full ${
+          statusModal === 'sidebar' ? 'left-[250px]' : 'left-0'
+        } ${statusModal === 'sidebarAuth' ? 'right-[250px]' : 'right-0'} ${
+          statusModal === 'sidebar' || statusModal === 'sidebarAuth'
+            ? 'px-2'
+            : 'px-9'
+        } h-[60px] z-[100] flex items-center justify-between`}
       >
         <div
           onClick={handleShowModalSideBar}

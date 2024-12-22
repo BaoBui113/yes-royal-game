@@ -3,6 +3,7 @@ import { useAuth } from '@/lib/context/AuthContext';
 import Baccarat from '../Baccarat';
 import BaccaratInsurance from '../Baccarat_Insurance';
 import BlackJack from '../BlackJack';
+import BullFight from '../BullFight';
 import Caribbean from '../Caribbean';
 import Crazy21 from '../Crazy21';
 import Devil from '../Devil';
@@ -56,6 +57,7 @@ export default function CommonGameRule() {
         {statusGameRule === 6 && <Crazy21 />}
         {statusGameRule === 7 && <BaccaratInsurance />}
         {statusGameRule === 8 && <Caribbean />}
+        {statusGameRule === 9 && <BullFight />}
         {statusGameRule === 10 && <TripleFaceCard />}
         {statusGameRule === 11 && <Devil />}
       </div>

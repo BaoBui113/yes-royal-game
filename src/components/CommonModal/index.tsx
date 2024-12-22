@@ -16,10 +16,10 @@ export default function Modal({
 }) {
   return (
     <div
-      className={`z-40 transition-all ease-linear duration-300 ${
+      className={`z-40 transition-all ease duration-300 ${
         isOpen
-          ? 'opacity-100 fixed inset-0 h-screen flex items-center justify-center bg-black bg-opacity-50'
-          : 'opacity-0 h-0'
+          ? 'scale-100 opacity-100 fixed inset-0 h-screen flex items-center justify-center bg-black bg-opacity-50'
+          : 'scale-95 opacity-0'
       }`}
       onClick={onClose}
     >
@@ -30,8 +30,8 @@ export default function Modal({
             boxShadow: '0px 0px 50px #773d05',
             backgroundPosition: 'center',
           }}
-          className={`w-[1000px] h-fit relative border-solid border-[2px] border-[#fee188]  p-6 shadow-lg transition-transform duration-300 transform ${
-            isOpen ? 'scale-100 opacity-100' : 'scale-95 opacity-0 h-0'
+          className={`w-[1000px] relative border-solid border-[2px] border-[#fee188] py-6 shadow-lg transition-transform duration-300 transform ${
+            isOpen ? 'scale-100 opacity-100' : 'scale-95 opacity-30'
           } ${className}`}
           onClick={(e) => e.stopPropagation()}
         >
@@ -46,7 +46,9 @@ export default function Modal({
             />
           </div>
           {title && <h2 className="text-xl font-bold mb-4">{title}</h2>}
-          <div>{children}</div>
+          <div className="h-[600px] overflow-auto custom-scroll-bar">
+            {children}
+          </div>
         </div>
       )}
     </div>

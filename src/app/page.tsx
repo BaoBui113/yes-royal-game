@@ -17,10 +17,11 @@ import SidebarAuthMobile from '@/components/ModalSidebarAuth';
 import Sidebar from '@/components/ModalSideBarMobile';
 import MoneyMenu from '@/components/MoneyMenu';
 import Notice from '@/components/Notice';
+import ProviderPage from '@/components/ProviderPage';
 
 export default function Home() {
   return (
-    <section className="relative">
+    <ProviderPage>
       <Header />
       <Sidebar />
       <SidebarAuthMobile />
@@ -40,6 +41,6 @@ export default function Home() {
       <ModalBoard />
       <OtherMenu />
       <ModalGameRule />
-    </section>
+    </ProviderPage>
   );
 }

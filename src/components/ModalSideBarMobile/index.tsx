@@ -70,9 +70,9 @@ const listGameRules = [
     value: '',
   },
 ];
-const listOtherMenu = [];
+
 const Sidebar = () => {
-  const { isModalSidebar, handleCloseModalSideBar } = useAuth();
+  const { closeModal, statusModal } = useAuth();
   const [openGameRule, setOpenGameRule] = useState(false);
   const handleOpenGameRule = (
     e: MouseEvent<HTMLParagraphElement, globalThis.MouseEvent>,
@@ -80,25 +80,24 @@ const Sidebar = () => {
     e.stopPropagation();
     setOpenGameRule(!openGameRule);
   };
-  console.log('isModalSidebar', isModalSidebar);
 
   return (
     <div className="flex items-center justify-center max-h-screen overflow-hidden">
       <div
         className={`fixed inset-0 z-[70] overflow-hidden transition-all ease-linear duration-300 ${
-          isModalSidebar
+          statusModal === 'sidebar'
             ? ' flex items-center justify-center bg-black bg-opacity-50'
             : ' opacity-0 h-0'
         }`}
       >
         <div
-          onClick={handleCloseModalSideBar}
+          onClick={closeModal}
           className="absolute inset-0 transition-opacity bg-gray-500 bg-opacity-75"
         />
         <section className="absolute inset-y-0 left-0 flex max-w-full">
           <div
             className={`transform transition-transform duration-300 ${
-              isModalSidebar ? 'translate-x-0' : '-translate-x-full'
+              statusModal === 'sidebar' ? 'translate-x-0' : '-translate-x-full'
             }`}
           >
             <div className="flex flex-col w-[250px] h-full bg-[#5e5037] shadow-xl relative overflow-auto pb-[60px] ">

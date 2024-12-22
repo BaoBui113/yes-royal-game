@@ -13,8 +13,6 @@ interface AuthContextType {
   login: (token: string) => void;
   logout: () => void;
   closeModal: () => void;
-  isModalLoginOpen: boolean;
-  setIsModalLoginOpen: React.Dispatch<React.SetStateAction<boolean>>;
   handleShowModalLogin: () => void;
   selectGameRun: number;
   setSelectGameRun: (value: number) => void;
@@ -27,13 +25,7 @@ interface AuthContextType {
   isModalSendPhoneSms: boolean;
   setIsModalSendPhoneSms: React.Dispatch<React.SetStateAction<boolean>>;
   handleShowModalSideBar: () => void;
-  isModalSidebar: boolean;
-  setIsModalSideBar: React.Dispatch<React.SetStateAction<boolean>>;
-  handleCloseModalSideBar: () => void;
   handleShowModalSidebarAuth: () => void;
-  isModalSidebarAuth: boolean;
-  setIsModalSidebarAuth: React.Dispatch<React.SetStateAction<boolean>>;
-  handleCloseModalSidebarAuth: () => void;
   handleShowModalMyPageHistoryPoint: () => void;
   handleShowModalMyPageInfoMember: () => void;
   isModalMyPage: {
@@ -73,11 +65,8 @@ interface AuthProviderProps {
 // Create provider component
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [user, setUser] = useState<IProfile | null>(null);
-  const [isModalLoginOpen, setIsModalLoginOpen] = useState(false);
   const [isModalDepositNotice, setIsModalDepositNotice] = useState(false);
   const [isModalSendPhoneSms, setIsModalSendPhoneSms] = useState(false);
-  const [isModalSidebar, setIsModalSideBar] = useState(false);
-  const [isModalSidebarAuth, setIsModalSidebarAuth] = useState(false);
   const [statusModal, setStatusModal] = useState('');
   const [statusGameRule, setStatusGameRule] = useState(1);
   const [isModalMyPage, setIsModalMyPage] = useState({
@@ -105,6 +94,10 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       historyPoint: !isModalMyPage.historyPoint,
       infoMember: false,
     });
+  };
+
+  const handleShowModalLogin = () => {
+    setStatusModal('login');
   };
 
   const handleShowModalConvertPoint = () => {
@@ -166,39 +159,15 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   };
 
   const handleShowModalSidebarAuth = () => {
-    if (isModalSidebar) {
-      setIsModalSideBar(false);
-    }
-    setIsModalSidebarAuth(!isModalSidebarAuth);
-  };
-
-  const handleCloseModalSidebarAuth = () => {
-    if (isModalSidebar) {
-      setIsModalSideBar(false);
-    }
-    setIsModalSidebarAuth(!isModalSidebarAuth);
-  };
-
-  const handleShowModalLogin = () => {
-    setIsModalLoginOpen(true);
+    setStatusModal('sidebarAuth');
   };
 
   const handleShowModalSendPhoneSms = () => {
     setIsModalSendPhoneSms(true);
   };
 
-  const handleCloseModalSideBar = () => {
-    if (isModalSidebarAuth) {
-      setIsModalSidebarAuth(false);
-    }
-    setIsModalSideBar(!isModalSidebar);
-  };
-
   const handleShowModalSideBar = () => {
-    if (isModalSidebarAuth) {
-      setIsModalSidebarAuth(false);
-    }
-    setIsModalSideBar(!isModalSidebar);
+    setStatusModal('sidebar');
   };
 
   const login = (auth: string) => {
@@ -224,8 +193,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         login,
         logout,
         closeModal,
-        setIsModalLoginOpen,
-        isModalLoginOpen,
         handleShowModalLogin,
         handleShowModalNotice,
         handleShowModalDeposit,
@@ -238,14 +205,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         handleShowModalSendPhoneSms,
         isModalSendPhoneSms,
         setIsModalSendPhoneSms,
-        isModalSidebar,
-        setIsModalSideBar,
         handleShowModalSideBar,
         handleShowModalSidebarAuth,
-        isModalSidebarAuth,
-        setIsModalSidebarAuth,
-        handleCloseModalSidebarAuth,
-        handleCloseModalSideBar,
         handleShowModalMyPageHistoryPoint,
         handleShowModalMyPageInfoMember,
         isModalMyPage,

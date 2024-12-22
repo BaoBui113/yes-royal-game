@@ -21,8 +21,8 @@ const schema = yup.object().shape({
 export type FormLoginType = yup.InferType<typeof schema>;
 
 export default function LoginForm() {
-  const { isModalLoginOpen, setIsModalLoginOpen, login } = useAuth();
-  const closeModal = () => setIsModalLoginOpen(false);
+  const { closeModal, statusModal, login } = useAuth();
+
   const [isVisible, setIsVisible] = React.useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const toggleVisibility = () => setIsVisible(!isVisible);
@@ -56,13 +56,12 @@ export default function LoginForm() {
     setIsLoading(false);
   };
   return (
-    <Modal
-      className=" flex justify-center items-center flex-col"
-      title="Login"
-      isOpen={isModalLoginOpen}
-      onClose={closeModal}
-    >
-      <form autoComplete="off" onSubmit={handleSubmit(onSubmit)}>
+    <Modal title="Login" isOpen={statusModal === 'login'} onClose={closeModal}>
+      <form
+        className="flex justify-center items-center flex-col h-full max-w-[300px] mx-auto"
+        autoComplete="off"
+        onSubmit={handleSubmit(onSubmit)}
+      >
         <Controller
           name="username"
           control={control}

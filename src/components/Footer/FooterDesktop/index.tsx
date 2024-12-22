@@ -86,16 +86,16 @@ const footers = [
     title: 'HOW TO PLAY',
     data: [
       { title: '바카라', link: '/baccarat' },
-      { title: '블랙잭', link: '' },
-      { title: '룰렛', link: '' },
-      { title: '식보', link: '' },
-      { title: '드래곤타이거', link: '' },
-      { title: '크레이지21', link: '' },
-      { title: '바카라보험', link: '' },
-      { title: '캐리비언스터드포커', link: '' },
-      { title: 'BullFight', link: '' },
-      { title: '트리플페이스카드', link: '' },
-      { title: '마종', link: '' },
+      { title: '블랙잭', link: '/blackjack' },
+      { title: '룰렛', link: '/roulette' },
+      { title: '식보', link: '/food' },
+      { title: '드래곤타이거', link: '/dragon' },
+      { title: '크레이지21', link: '/crazy21' },
+      { title: '바카라보험', link: '/baccarat-insurance' },
+      { title: '캐리비언스터드포커', link: '/caribbean' },
+      { title: 'BullFight', link: '/bullfight' },
+      { title: '트리플페이스카드', link: '/triple-card' },
+      { title: '마종', link: '/devil' },
     ],
   },
 ];
@@ -168,6 +168,56 @@ export default function FooterDesktop() {
     if (item.link === '/baccarat') {
       handleGameRule();
       setStatusGameRule(1);
+      return;
+    }
+    if (item.link === '/blackjack') {
+      handleGameRule();
+      setStatusGameRule(2);
+      return;
+    }
+    if (item.link === '/roulette') {
+      handleGameRule();
+      setStatusGameRule(3);
+      return;
+    }
+    if (item.link === '/food') {
+      handleGameRule();
+      setStatusGameRule(4);
+      return;
+    }
+    if (item.link === '/dragon') {
+      handleGameRule();
+      setStatusGameRule(5);
+      return;
+    }
+    if (item.link === '/crazy21') {
+      handleGameRule();
+      setStatusGameRule(6);
+      return;
+    }
+    if (item.link === '/baccarat-insurance') {
+      handleGameRule();
+      setStatusGameRule(7);
+      return;
+    }
+    if (item.link === '/caribbean') {
+      handleGameRule();
+      setStatusGameRule(8);
+      return;
+    }
+    if (item.link === '/bullfight') {
+      handleGameRule();
+      setStatusGameRule(9);
+      return;
+    }
+    if (item.link === '/triple-card') {
+      handleGameRule();
+      setStatusGameRule(10);
+      return;
+    }
+    if (item.link === '/devil') {
+      handleGameRule();
+      setStatusGameRule(11);
       return;
     }
   };
