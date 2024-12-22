@@ -34,8 +34,8 @@ export default function FooterMobile() {
             'linear-gradient(180deg, #1F1610 0%, #543B2B 80%, #855E45 100%)',
         }}
         className={`fixed bottom-0 w-full ${
-          statusModal === 'sidebarAuth' ? 'right-[250px]' : ''
-        } ${statusModal === 'sidebar' ? 'left-[250px]' : ''}  ${
+          statusModal === 'sidebarAuth' ? 'right-[250px] bg-black' : ''
+        } ${statusModal === 'sidebar' ? 'left-[250px] bg-black' : ''}  ${
           statusModal === 'sidebar' || statusModal === 'sidebarAuth'
             ? 'px-2'
             : 'px-9'
