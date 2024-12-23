@@ -17,7 +17,7 @@ export const customFetch = async (url: string, options: FetchOptions = {}) => {
         Authorization: AUTHOR_TOKEN,
       },
     });
-    console.log('response', response);
+    // console.log('response', response);
     if (response.status === 401) {
       const errorData = { message: 'Unauthorized', status: 401 };
       return errorData;

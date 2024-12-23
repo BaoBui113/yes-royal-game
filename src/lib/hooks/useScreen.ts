@@ -1,28 +1,28 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from 'react';
 
-type BreakPoint = "xs" | "sm" | "md" | "lg" | "xl" | "xxl";
+type BreakPoint = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
 
 export function useScreen(breakpoint: BreakPoint) {
   function isBreakPoint(): boolean {
-    if (typeof window !== "undefined") {
-      let width = window.innerWidth;
+    if (typeof window !== 'undefined') {
+      const width = window.innerWidth;
       switch (breakpoint) {
-        case "xxl": {
+        case 'xxl': {
           return width >= 1214;
         }
-        case "xl": {
+        case 'xl': {
           return width >= 1200;
         }
-        case "lg": {
+        case 'lg': {
           return width >= 1024;
         }
-        case "md": {
+        case 'md': {
           return width >= 768;
         }
-        case "sm": {
+        case 'sm': {
           return width >= 640;
         }
-        case "xs": {
+        case 'xs': {
           return width >= 480;
         }
         default: {
@@ -39,10 +39,11 @@ export function useScreen(breakpoint: BreakPoint) {
       setScreen(isBreakPoint());
     }
     handleResize();
-    window.addEventListener("resize", handleResize);
+    window.addEventListener('resize', handleResize);
     return () => {
-      window.removeEventListener("resize", handleResize);
+      window.removeEventListener('resize', handleResize);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return screen;
 }

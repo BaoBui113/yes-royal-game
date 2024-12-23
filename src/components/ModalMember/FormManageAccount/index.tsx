@@ -1,8 +1,6 @@
 'use client';
-import { useAuth } from '@/lib/context/AuthContext';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Button } from '@nextui-org/react';
-import { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import * as yup from 'yup';
 
@@ -19,8 +17,7 @@ export default function FormManageAccount({
   bankList: { BANK_CD: number; BANK_NM: string }[];
   holder: { BANK_CD?: number; ACC_NAME?: string };
 }) {
-  const { user, setIsModalDepositOpen } = useAuth();
-  const [isLoading, setIsLoading] = useState(false);
+  //   const [isLoading, setIsLoading] = useState(false);
   const {
     control,
     handleSubmit,
@@ -34,6 +31,8 @@ export default function FormManageAccount({
     },
   });
   const onSubmit = async (data: FormDepositType) => {
+    console.log(data);
+
     // if (!user) {
     //   console.error('User is not authenticated');
     //   return;
@@ -162,7 +161,7 @@ export default function FormManageAccount({
       </div>
       <div className="flex justify-center mt-4">
         <Button
-          isLoading={isLoading}
+          //   isLoading={isLoading}
           type="submit"
           className="px-4 py-2 bg-[#fdcc83] text-[#060708] rounded hover:bg-[#e0b567]"
         >

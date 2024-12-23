@@ -32,7 +32,6 @@ export default function Login() {
     }
     toast.error('비밀번호 또는 사용자 이름이 올바르지 않습니다');
   };
-  console.log(user);
 
   return (
     <>

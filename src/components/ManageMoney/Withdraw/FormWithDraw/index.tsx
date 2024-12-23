@@ -29,7 +29,7 @@ const schema = yup.object().shape({
 });
 export type FormDepositType = yup.InferType<typeof schema>;
 export default function FormWithDraw() {
-  const { user, setIsModalDepositOpen } = useAuth();
+  const { user, closeModal } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
   const {
     control,
@@ -64,7 +64,7 @@ export default function FormWithDraw() {
     if (response.status === '0') {
       toast.success(response.message);
       setIsLoading(false);
-      setIsModalDepositOpen(false);
+      closeModal();
       return;
     }
     setIsLoading(false);

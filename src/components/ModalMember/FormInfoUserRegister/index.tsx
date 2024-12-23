@@ -1,8 +1,6 @@
 'use client';
-import { useAuth } from '@/lib/context/AuthContext';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Button } from '@nextui-org/react';
-import { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import * as yup from 'yup';
 
@@ -16,8 +14,7 @@ const schema = yup.object().shape({
 });
 export type FormDepositType = yup.InferType<typeof schema>;
 export default function FormUserRegister() {
-  const { user, setIsModalDepositOpen } = useAuth();
-  const [isLoading, setIsLoading] = useState(false);
+  //   const [isLoading, setIsLoading] = useState(false);
   const {
     control,
     handleSubmit,
@@ -31,6 +28,8 @@ export default function FormUserRegister() {
     },
   });
   const onSubmit = async (data: FormDepositType) => {
+    console.log(data);
+
     // if (!user) {
     //   console.error('User is not authenticated');
     //   return;
@@ -164,7 +163,7 @@ export default function FormUserRegister() {
 
       <div className="flex justify-center mt-4">
         <Button
-          isLoading={isLoading}
+          //   isLoading={isLoading}
           type="submit"
           className="px-4 py-2 bg-[#fdcc83] text-[#060708] rounded hover:bg-[#e0b567]"
         >

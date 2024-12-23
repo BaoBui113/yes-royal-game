@@ -1,8 +1,7 @@
 'use client';
-import { useAuth } from '@/lib/context/AuthContext';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Button } from '@nextui-org/react';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import * as yup from 'yup';
 
@@ -51,17 +50,15 @@ const schema = yup.object().shape({
 });
 export type FormDepositType = yup.InferType<typeof schema>;
 export default function FormChangePhone() {
-  const { user, setIsModalDepositOpen } = useAuth();
   const input1Ref = useRef<HTMLInputElement>(null);
   const input2Ref = useRef<HTMLInputElement>(null);
-  const input3Ref = useRef<HTMLInputElement>(null);
 
-  const [isLoading, setIsLoading] = useState(false);
+  //   const [isLoading, setIsLoading] = useState(false);
   const {
     control,
     handleSubmit,
     watch,
-    formState: { errors },
+    // formState: {  },
   } = useForm({
     resolver: yupResolver(schema),
     defaultValues: {
@@ -71,8 +68,10 @@ export default function FormChangePhone() {
     },
   });
   const input1 = watch('input1');
-  const input2 = watch('input2');
+
   const onSubmit = async (data: FormDepositType) => {
+    console.log(data);
+
     // if (!user) {
     //   console.error('User is not authenticated');
     //   return;
@@ -241,7 +240,7 @@ export default function FormChangePhone() {
 
       <div className="flex justify-center mt-4">
         <Button
-          isLoading={isLoading}
+          //   isLoading={isLoading}
           type="submit"
           className="px-4 py-2 bg-[#fdcc83] text-[#060708] rounded hover:bg-[#e0b567]"
         >

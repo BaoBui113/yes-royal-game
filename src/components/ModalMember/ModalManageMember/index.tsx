@@ -51,6 +51,8 @@ export default function MyPage() {
   useEffect(() => {
     if (!user || !isModalMyPage.infoMember) return;
     getMyPage();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user, isModalMyPage.infoMember]);
 
   return (

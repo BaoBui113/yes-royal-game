@@ -82,9 +82,9 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="flex items-center justify-center max-h-screen overflow-hidden">
+    <div className="flex items-center justify-center max-h-screen">
       <div
-        className={`fixed inset-0 z-[70] overflow-hidden transition-all ease-linear duration-300 ${
+        className={`fixed inset-0 z-[70] transition-all ease-linear duration-300 ${
           statusModal === 'sidebar'
             ? ' flex items-center justify-center bg-black bg-opacity-50'
             : ' opacity-0 h-0'
@@ -100,7 +100,7 @@ const Sidebar = () => {
               statusModal === 'sidebar' ? 'translate-x-0' : '-translate-x-full'
             }`}
           >
-            <div className="flex flex-col w-[250px] h-full bg-[#5e5037] shadow-xl relative overflow-auto pb-[60px] ">
+            <div className="flex flex-col w-[250px] h-full bg-[#5e5037] shadow-xl relative overflow-auto pb-[60px] custom-scroll-bar">
               <h2 className="font-semibold text-center text-[#9c855c] py-[10px]">
                 예스카지노
               </h2>
